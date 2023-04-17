@@ -322,7 +322,7 @@ public class FirstPersonController : MonoBehaviour
                 float deltaHeight = (originalColliderHeight - crouchColliderHeight) / 2;
                 capsuleCollider.center = new Vector3(0, crouchColliderCenterYOffset, 0);
                 capsuleCollider.height = crouchColliderHeight;
-                capsuleTransform.transform.position -= new Vector3(0, deltaHeight, 0);
+                
             }
 
             isCrouching = true;
@@ -344,7 +344,7 @@ public class FirstPersonController : MonoBehaviour
                 float deltaHeight = (originalColliderHeight - crouchColliderHeight) / 2;
                 capsuleCollider.center = Vector3.zero;
                 capsuleCollider.height = originalColliderHeight;
-                capsuleTransform.transform.position += new Vector3(0, deltaHeight, 0);
+                
             }
 
             float currentScaleY = capsuleTransform.transform.localScale.y;
