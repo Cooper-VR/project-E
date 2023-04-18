@@ -81,7 +81,7 @@ public class Gun : MonoBehaviour
 
 		Debug.DrawRay(cam.position, cam.forward * 5);
 
-		if (Input.GetAxis("Fire1") == 1)
+		if (Input.GetMouseButton(0))
 		{
             Debug.Log(gunData.currentAmmo);
             Shoot();
