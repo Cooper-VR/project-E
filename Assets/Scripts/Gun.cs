@@ -14,10 +14,13 @@ public class Gun : MonoBehaviour
 	public GameObject Bullet;
 	public int bulletSpeed;
 
-	float timeSinceLastShot;
+
+
+    float timeSinceLastShot;
 
 	private void Start()
 	{
+		gunData.currentAmmo = 30;
 		PlayerShoot.shootInput += Shoot;
 		PlayerShoot.reloadInput += StartReload;
 	}
@@ -28,10 +31,12 @@ public class Gun : MonoBehaviour
 	{
 		if (!gunData.reloading && this.gameObject.activeSelf)
 			StartCoroutine(Reload());
+		
 	}
 
 	private IEnumerator Reload()
 	{
+		Debug.Log("starting");
 		gunData.reloading = true;
 
 		yield return new WaitForSeconds(gunData.reloadTime);
@@ -45,24 +50,24 @@ public class Gun : MonoBehaviour
 
 	private void Shoot()
 	{
-		gunData.currentAmmo = 5;
 		if (gunData.currentAmmo > 0)
 		{
 			if (CanShoot())
 			{
-				var direction = cam.forward;
+                GameObject newBullet = GameObject.Instantiate(Bullet, Muzzle.transform.position, Muzzle.transform.rotation);
+				Rigidbody rb = newBullet.GetComponent<Rigidbody>();
 
+				Vector3 direction = cam.forward;
 				direction /= direction.magnitude;
 
-				Debug.Log(direction);
+				direction *= 200;
 
-				GameObject newBullet = GameObject.Instantiate(Bullet, Muzzle.transform.position, Muzzle.rotation);
+				
 
-				//this should call en event to move the instatated bullet
-				//newBullet.transform.position += direction * bulletSpeed * Time.deltaTime;
-					
 
-				gunData.currentAmmo--;
+				rb.AddForce(direction * bulletSpeed);
+
+                gunData.currentAmmo--;
 				
 				timeSinceLastShot = 0;
 				OnGunShot();
@@ -78,9 +83,15 @@ public class Gun : MonoBehaviour
 
 		if (Input.GetAxis("Fire1") == 1)
 		{
-			Shoot();
+            Debug.Log(gunData.currentAmmo);
+            Shoot();
 		}
-	}
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			Debug.Log(gunData.reloadTime);
+			StartReload();
+        }
+    }
 
 	private void OnDestroy()
 	{
@@ -88,5 +99,5 @@ public class Gun : MonoBehaviour
 		PlayerShoot.reloadInput -= StartReload;
 	}
 
-	private void OnGunShot() { }
+    private void OnGunShot() { }
 }

@@ -995,7 +995,7 @@ MonoBehaviour:
   cam: {fileID: 963194228}
   Muzzle: {fileID: 1245599190}
   Bullet: {fileID: 7622915428474892921, guid: bfe793e47973603409b9c5972158ce85, type: 3}
-  bulletSpeed: 6
+  bulletSpeed: 35000
 --- !u!4 &1457006978 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b3930b750213c8041b482abf577f86f0, type: 3}
