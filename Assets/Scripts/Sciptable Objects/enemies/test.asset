@@ -9,16 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c976877e0d9d84589995ebf63efd4a, type: 3}
-  m_Name: AR
+  m_Script: {fileID: 11500000, guid: 76be18ec71db5924d9a44430cc797b72, type: 3}
+  m_Name: test
   m_EditorClassIdentifier: 
-  name: Assault Rifle
-  speed: 35000
-  damageAmount: 10
-  damage: 22
-  maxDistance: 200
-  currentAmmo: 26
-  magSize: 31
-  fireRate: 600
-  reloadTime: 1.5
-  reloading: 0
+  name: 
+  speed: 0
+  maxHealth: 0

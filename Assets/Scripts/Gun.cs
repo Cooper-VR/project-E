@@ -8,11 +8,10 @@ public class Gun : MonoBehaviour
 {
 
 	[Header("References")]
-	[SerializeField] private GunData gunData;
+	[SerializeField] public GunData gunData;
 	[SerializeField] private Transform cam;
 	public Transform Muzzle;
 	public GameObject Bullet;
-	public int bulletSpeed;
 
 
 
@@ -36,7 +35,6 @@ public class Gun : MonoBehaviour
 
 	private IEnumerator Reload()
 	{
-		Debug.Log("starting");
 		gunData.reloading = true;
 
 		yield return new WaitForSeconds(gunData.reloadTime);
@@ -62,10 +60,7 @@ public class Gun : MonoBehaviour
 
 				direction *= 200;
 
-				
-
-
-				rb.AddForce(direction * bulletSpeed);
+				rb.AddForce(direction * gunData.speed);
 
                 gunData.currentAmmo--;
 				
@@ -83,12 +78,10 @@ public class Gun : MonoBehaviour
 
 		if (Input.GetMouseButton(0))
 		{
-            Debug.Log(gunData.currentAmmo);
             Shoot();
 		}
 		if (Input.GetKeyDown(KeyCode.R))
 		{
-			Debug.Log(gunData.reloadTime);
 			StartReload();
         }
     }

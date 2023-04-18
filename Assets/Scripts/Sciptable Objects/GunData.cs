@@ -8,6 +8,8 @@ public class GunData : ScriptableObject
 
     [Header("Info")]
     public new string name;
+    public int speed;
+    public int damageAmount;
 
     [Header("Shooting")]
     public float damage;
