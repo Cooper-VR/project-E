@@ -25,7 +25,6 @@ public class bulletMove : MonoBehaviour
 		timeInterval -= 2;
 		if (other.gameObject.name == "enemy") 
 		{
-			Debug.Log("hit");
 			other.gameObject.GetComponent<enemyController>().alterHP(5);
 		}
 		Destroy(gameObject);
