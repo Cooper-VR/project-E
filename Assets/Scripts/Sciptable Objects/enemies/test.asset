@@ -15,3 +15,4 @@ MonoBehaviour:
   name: test
   speed: 10
   maxHealth: 250
+  damage: 10
