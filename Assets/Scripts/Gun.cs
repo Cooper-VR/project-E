@@ -12,6 +12,8 @@ public class Gun : MonoBehaviour
 	[SerializeField] private Transform cam;
 	public Transform Muzzle;
 	public GameObject Bullet;
+
+	[Header("Bullet Speed")]
 	public int bulletSpeed;
 
 
