@@ -9,16 +9,9 @@ public class enemyController: MonoBehaviour
     private float maxHealth;
     public enemies enemyData;
 
-    private void OnTriggerEnter(Collider other)
+    public void alterHP(float damage)
     {
-        Debug.Log("hit");
-        if (other.gameObject.tag == "bullet")
-        {
-
-            int damageAmount = other.gameObject.GetComponent<Gun>().gunData.damageAmount;
-
-            health -= damageAmount;
-        }
+        health -= damage;
     }
 
     private void Start()
@@ -26,11 +19,11 @@ public class enemyController: MonoBehaviour
         maxHealth = enemyData.maxHealth;
         health = maxHealth;
     }
+
     private void Update()
     {
         if (health <= 0)
         {
-            //give player stuff
             Destroy(gameObject);
         }
     }
