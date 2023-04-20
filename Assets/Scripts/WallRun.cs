@@ -63,7 +63,7 @@ public class WallRun : MonoBehaviour
     {
         //FirstPersonController.
 
-        int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
+        int layerMask = ~((1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("bullet")));
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallDistance, layerMask);
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallHit, wallDistance, layerMask);
     }

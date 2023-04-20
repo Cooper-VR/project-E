@@ -196,7 +196,7 @@ public class FirstPersonController : MonoBehaviour
     private bool OnSlope()
     {
         float rayDistance = 1.1f;
-        int layerMask = ~LayerMask.GetMask("Player"); // exclude the "Player" layer from the raycast
+        int layerMask = ~((1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("bullet")));
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, rayDistance, layerMask))
         {
