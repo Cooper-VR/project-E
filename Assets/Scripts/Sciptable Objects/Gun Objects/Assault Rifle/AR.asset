@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Assault Rifle
   speed: 200
   damageAmount: 10
-  damage: 22
+  canADS: 1
   maxDistance: 200
   currentAmmo: 23
   magSize: 31

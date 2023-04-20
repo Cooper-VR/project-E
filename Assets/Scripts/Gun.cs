@@ -21,6 +21,7 @@ public class Gun : MonoBehaviour
 
     private void Start()
 	{
+		cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
 		gunData.currentAmmo = gunData.magSize;
 		PlayerShoot.shootInput += Shoot;
 		PlayerShoot.reloadInput += StartReload;
