@@ -12,16 +12,22 @@ public class Gun : MonoBehaviour
 	[SerializeField] private Transform cam;
 	public Transform Muzzle;
 	public GameObject Bullet;
+	public GameObject particleEffects;
 
 
     float timeSinceLastShot;
+    float particleTime = 0f;
+	float particleCurrentTime = 0f;
 
-	private void Start()
+    private void Start()
 	{
+		Debug.Log(gunData.fireRate);
+
 		gunData.currentAmmo = 30;
 		PlayerShoot.shootInput += Shoot;
 		PlayerShoot.reloadInput += StartReload;
-	}
+        particleEffects.SetActive(false);
+    }
 
 	private void OnDisable() => gunData.reloading = false;
 
@@ -51,8 +57,13 @@ public class Gun : MonoBehaviour
 		{
 			if (CanShoot())
 			{
+				particleEffects.SetActive(true);
+				ParticleSystem singleParticle = particleEffects.transform.GetChild(0).GetComponent<ParticleSystem>();
+
+
                 GameObject newBullet = GameObject.Instantiate(Bullet, Muzzle.transform.position, Muzzle.transform.rotation);
 				Rigidbody rb = newBullet.GetComponent<Rigidbody>();
+				
 
 				Vector3 direction = cam.forward;
 				direction /= direction.magnitude;
@@ -64,7 +75,11 @@ public class Gun : MonoBehaviour
                 gunData.currentAmmo--;
 				
 				timeSinceLastShot = 0;
-				OnGunShot();
+
+				particleTime = Time.time;
+				particleCurrentTime = Time.time;
+
+                OnGunShot();
 			}
 		}
 	}
@@ -83,6 +98,13 @@ public class Gun : MonoBehaviour
 		{
 			StartReload();
         }
+
+		particleCurrentTime = Time.time;
+
+		if (particleCurrentTime - particleTime > 0.15f)
+		{
+			particleEffects.SetActive(false);
+		}
     }
 
 	private void OnDestroy()

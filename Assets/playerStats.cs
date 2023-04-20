@@ -15,7 +15,10 @@ public class playerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            Debug.Log("do ui animation for when they die");
+        }
     }
 
     private void OnCollisionStay(Collision collision)
