@@ -52,7 +52,7 @@ public class Gun : MonoBehaviour
 		{
 			if (CanShoot())
 			{
-                GameObject newBullet = GameObject.Instantiate(Bullet, Muzzle.transform.position, Muzzle.transform.rotation);
+                GameObject newBullet = GameObject.Instantiate(Bullet, cam.transform.position, cam.transform.rotation);
 				Rigidbody rb = newBullet.GetComponent<Rigidbody>();
 
 				Vector3 direction = cam.forward;
