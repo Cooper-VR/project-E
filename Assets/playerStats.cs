@@ -27,8 +27,6 @@ public class playerStats : MonoBehaviour
         {
             totalTime += Time.deltaTime;
 
-            Debug.Log(totalTime);
-
             if (Mathf.RoundToInt(totalTime) % 5 == 0)
             {
                 totalTime = 0.51f;

@@ -21,9 +21,7 @@ public class Gun : MonoBehaviour
 
     private void Start()
 	{
-		Debug.Log(gunData.fireRate);
-
-		gunData.currentAmmo = 30;
+		gunData.currentAmmo = gunData.magSize;
 		PlayerShoot.shootInput += Shoot;
 		PlayerShoot.reloadInput += StartReload;
         particleEffects.SetActive(false);
@@ -101,7 +99,7 @@ public class Gun : MonoBehaviour
 
 		particleCurrentTime = Time.time;
 
-		if (particleCurrentTime - particleTime > 0.15f)
+		if (particleCurrentTime - particleTime > gunData.particleCooldown)
 		{
 			particleEffects.SetActive(false);
 		}

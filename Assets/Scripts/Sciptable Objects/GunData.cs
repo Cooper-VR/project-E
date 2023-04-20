@@ -20,6 +20,7 @@ public class GunData : ScriptableObject
     public int magSize;
     [Tooltip("In RPM")] public float fireRate;
     public float reloadTime;
+    public float particleCooldown;
     [HideInInspector] public bool reloading;
 
 }   

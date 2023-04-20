@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0c976877e0d9d84589995ebf63efd4a, type: 3}
-  m_Name: AR
+  m_Name: miniGun
   m_EditorClassIdentifier: 
   name: Assault Rifle
   speed: 200
