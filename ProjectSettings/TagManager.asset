@@ -3,19 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - bullet
-  - enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - enemy
+  - 
   - Water
   - UI
-  - bean
-  - enviornment
-  - bullet
+  - 
+  - 
+  - 
   - 
   - 
   - 

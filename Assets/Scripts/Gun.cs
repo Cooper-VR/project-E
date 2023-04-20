@@ -14,7 +14,6 @@ public class Gun : MonoBehaviour
 	public GameObject Bullet;
 
 
-
     float timeSinceLastShot;
 
 	private void Start()
