@@ -73,6 +73,6 @@ public class weaponSwitch : MonoBehaviour
 
 	private void OnWeaponSelected()
 	{
-		Debug.Log("select new weapon");
+		
 	}
 }
