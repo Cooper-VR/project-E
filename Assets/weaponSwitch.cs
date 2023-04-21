@@ -4,32 +4,75 @@ using UnityEngine;
 
 public class weaponSwitch : MonoBehaviour
 {
-    public GameObject ak47;
-    public GameObject miniGun;
+	[Header("References")]
+	[SerializeField] private Transform[] Weapons;
 
-    public GameObject[] loadout = new GameObject[2];
-    private int currentIndex = 0;
+	[Header("Keys")]
+	[SerializeField] private KeyCode[] Keys;
+
+	[Header("Settings")]
+	[SerializeField] private float switchtime;
+
+	private int selectedWeapon;
+	private float timeSinceSwitch;
+
 
     private void Start()
     {
-        WeaponSpawning(loadout[currentIndex % 2]);
+		SetWeapon();
+		Select(selectedWeapon);
+		timeSinceSwitch = 0;
     }
+
     private void Update()
     {
-        if (Input.mouseScrollDelta.y == 1)
-        {
-            Debug.Log(currentIndex);
-            loadout[currentIndex % 2].SetActive(false);
-            currentIndex++;
-            WeaponSpawning(loadout[currentIndex % 2]);
+		int previousSelection = selectedWeapon;
 
-        }
+		for (int i = 0; i < Keys.Length; i++)
+		{
+			if (Input.GetKeyDown(Keys[i]) && timeSinceSwitch >= switchtime)
+			{
+				selectedWeapon = i;
+			}
+		}
+
+		if (previousSelection != selectedWeapon)
+		{
+			Select(selectedWeapon);
+		}
+
+		timeSinceSwitch += Time.deltaTime;
     }
 
-    void WeaponSpawning(GameObject weapon)
+    private void SetWeapon()
+	{
+		Weapons = new Transform[transform.childCount];
+
+		for (int i = 0; i < transform.childCount; i++) 
+		{
+			Weapons[i] = transform.GetChild(i);
+		}
+
+		if (Keys == null)
+		{
+			Keys = new KeyCode[Weapons.Length];
+		}
+	}
+
+    private void Select(int weaponIndex)
     {
-        GameObject gun = GameObject.Instantiate(weapon, transform.position, transform.rotation);
-        gun.transform.localPosition = Vector3.zero;
-        gun.transform.SetParent(transform, false);
+		for (int i = 0; i < Weapons.Length; i++)
+		{
+			Weapons[i].gameObject.SetActive(i == weaponIndex);
+		}
+
+		timeSinceSwitch = 0;
+
+		OnWeaponSelected();
     }
+
+	private void OnWeaponSelected()
+	{
+		Debug.Log("select new weapon");
+	}
 }
