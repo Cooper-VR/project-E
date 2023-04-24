@@ -5,36 +5,98 @@ using UnityEngine.AI;
 
 public class enemyController: MonoBehaviour
 {
-    public float health;
-    private float maxHealth;
-    public enemies enemyData;
-    private NavMeshAgent agent;
+	public float health;
+	private float maxHealth;
+	public enemies enemyData;
 
+	public Transform muzzle;
+	public GameObject projectile;
+	public float projectileSpeed;
 
-    public void alterHP(float damage)
-    {
-        health -= damage;
-    }
+	private NavMeshAgent agent;
 
-    private void Start()
-    {
-        maxHealth = enemyData.maxHealth;
-        health = maxHealth;
-        agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.speed = enemyData.speed;
-        
-    }
+	private float currentTime = 0;
+	private float previousTime = 0;
 
-    private void Update()
-    {
-       
+	public enum enemyTypesEnum
+	{
+		running,
+		flying,
+		shooting
+	};
+	public enemyTypesEnum enemyTypes = enemyTypesEnum.running;
 
+	public void alterHP(float damage)
+	{
+		health -= damage;
+	}
 
-        agent.destination = GameObject.FindGameObjectWithTag("Player").transform.position;
+	private void Start()
+	{
+		maxHealth = enemyData.maxHealth;
+		health = maxHealth;
+		agent = gameObject.GetComponent<NavMeshAgent>();
+		agent.speed = enemyData.speed;
+		
+	}
 
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+	private void Update()
+	{
+		if (enemyTypes == enemyTypesEnum.running)
+		{
+			zombieSet();
+		} else if (enemyTypes == enemyTypesEnum.flying)
+		{
+			flyerSet();
+		}
+	}
+
+	private void zombieSet()
+	{
+		agent.destination = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+		if (health <= 0)
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	private void flyerSet()
+	{
+		if ((transform.position - GameObject.FindGameObjectWithTag("Player").transform.position).magnitude > 15f)
+		{
+			agent.destination = GameObject.FindGameObjectWithTag("Player").transform.position;
+	
+		}
+		else
+		{
+			agent.destination = transform.position;
+			currentTime += Time.deltaTime;
+			shootProjectile();
+		}
+	}
+
+	private void shootProjectile()
+	{
+		if (currentTime - previousTime >= 5f)
+		{
+			GameObject bullet = GameObject.Instantiate(projectile, muzzle.position, muzzle.rotation);
+			Vector3 positionDifference = transform.position - GameObject.FindGameObjectWithTag("Player").transform.position;
+
+			positionDifference = positionDifference.normalized;
+
+			Rigidbody rb = bullet.GetComponent<Rigidbody>();
+
+			previousTime = currentTime;
+
+			Vector3 direction = transform.forward;
+			direction /= direction.magnitude;
+
+			direction *= 200;
+
+			rb.AddForce(direction * projectileSpeed);
+		}
+
+		
+	}
 }

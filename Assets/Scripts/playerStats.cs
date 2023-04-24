@@ -33,5 +33,14 @@ public class playerStats : MonoBehaviour
                 health -= collision.gameObject.GetComponent<enemyController>().enemyData.damage;
             }
         }
+        else if (collision.gameObject.tag == "enemyBullet")
+        {
+            
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.tag);
     }
 }
