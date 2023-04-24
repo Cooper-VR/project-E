@@ -1,22 +1,20 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class enemySpawnerController : MonoBehaviour
 {
 	public spawner spawnData;
 	public LayerMask ground;
 
-	private int timeInterval;
+    #region private variables
+    private int timeInterval;
 	private float currentTime = 0;
 	private float timeOffset;
-
 	private int totalEnemies = 0;
-	
-	
-	void Start()
+    #endregion
+
+
+    void Start()
 	{
 		getRandomSpawn();
 		timeInterval = 60 / spawnData.EnemiesPerMin;
@@ -41,6 +39,10 @@ public class enemySpawnerController : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// will calculate a random point in the circle with the defined radius
+	/// </summary>
+	/// <returns>a spawn point in the circle defined by the radius</returns>
 	private Vector3 getRandomSpawn()
 	{
 		float radius = UnityEngine.Random.value;
@@ -68,6 +70,12 @@ public class enemySpawnerController : MonoBehaviour
 		return checkPosition(xSpawn, ySpawn);
 	}
 
+	/// <summary>
+	/// will use raycasting to check if the spawn point if valid, if not it will look up and down for a valid point
+	/// </summary>
+	/// <param name="x">the x value given by the random spawn function</param>
+	/// <param name="y">the y value given by the random spawn function</param>
+	/// <returns>a new valid point for the spawn</returns>
 	private Vector3 checkPosition(float x, float y)
 	{
 		bool gotPoint = false;
@@ -76,7 +84,6 @@ public class enemySpawnerController : MonoBehaviour
 
 		while (!gotPoint)
 		{
-			
 			var raycast = Physics.Raycast(new Vector3( x, 0, y), Vector3.up, out hit, Mathf.Infinity, ground);
 			if (Physics.Raycast(new Vector3(x, 0, y), Vector3.up, out hit, Mathf.Infinity, ground)) 
 			{
