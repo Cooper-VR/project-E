@@ -34,7 +34,7 @@ public class MenuCameraPosition : MonoBehaviour
 
     public void ToMain()
     {
-        this.transform.Translate(MainPos.transform.position);
+        this.transform.position = MainPos.transform.position;
         this.transform.LookAt(MainAng.transform.position);
         ConfigScreen.SetActive(false);
         PlayScreen.SetActive(false);
@@ -43,7 +43,7 @@ public class MenuCameraPosition : MonoBehaviour
 
     public void ToConfig()
     {
-        this.transform.Translate(ConfigPos.transform.position);
+        this.transform.position = ConfigPos.transform.position;
         this.transform.LookAt(ConfigAng.transform.position);
         ConfigScreen.SetActive(true);
         PlayScreen.SetActive(false);
@@ -52,14 +52,14 @@ public class MenuCameraPosition : MonoBehaviour
 
     public void ToGraphics()
     {
-        this.transform.Translate(MainPos.transform.position);
-        this.transform.LookAt(MainAng.transform.position);
+        this.transform.position = GraphPos.transform.position;
+        this.transform.LookAt(GraphAng.transform.position);
     }
 
     public void ToControls()
     {
-        this.transform.Translate(MainPos.transform.position);
-        this.transform.LookAt(MainAng.transform.position);
+        this.transform.position = ControlPos.transform.position;
+        this.transform.LookAt(ControlAng.transform.position);
     }
 
     public void ToPlay()
