@@ -27,6 +27,9 @@ public class enemyController: MonoBehaviour
 
     private void Update()
     {
+       
+
+
         agent.destination = GameObject.FindGameObjectWithTag("Player").transform.position;
 
         if (health <= 0)

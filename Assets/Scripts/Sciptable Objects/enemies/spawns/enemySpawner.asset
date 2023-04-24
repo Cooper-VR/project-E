@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: enemySpawner
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5240704633488086776, guid: 8a22a1818259c4447a2bd0bf27013928, type: 3}
-  EnemiesPerMin: 20
+  EnemiesPerMin: 12
   totalEnemies: 50
-  radius: 200
+  radius: 5

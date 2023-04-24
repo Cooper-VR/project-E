@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76be18ec71db5924d9a44430cc797b72, type: 3}
   m_Name: zombie
   m_EditorClassIdentifier: 
-  name: test
-  speed: 10
-  maxHealth: 250
+  name: zombie
+  speed: 4
+  maxHealth: 100
+  damage: 20
+  enemyTypes: 0

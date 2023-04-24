@@ -103,4 +103,9 @@ public class enemySpawnerController : MonoBehaviour
 		
 		return position;
 	}
+
+    private void OnDrawGizmos()
+    {
+		Gizmos.DrawWireSphere(transform.position, spawnData.radius);
+    }
 }

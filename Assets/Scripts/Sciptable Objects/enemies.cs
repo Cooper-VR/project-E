@@ -11,4 +11,13 @@ public class enemies : ScriptableObject
     public float maxHealth;
 
     public int damage;
+
+    public enum enemyTypesEnum
+        {
+            running,
+            flying,
+            shooting
+        };
+    public enemyTypesEnum enemyTypes = enemyTypesEnum.running;
+    
 }   
