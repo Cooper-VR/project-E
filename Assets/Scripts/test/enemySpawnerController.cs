@@ -7,26 +7,42 @@ using UnityEngine.UIElements;
 public class enemySpawnerController : MonoBehaviour
 {
 	public spawner spawnData;
-	
+	public LayerMask ground;
+
+	private int timeInterval;
+	private float currentTime = 0;
+	private float timeOffset;
+
+	private int totalEnemies = 0;
 	
 	
 	void Start()
 	{
 		getRandomSpawn();
+		timeInterval = 60 / spawnData.EnemiesPerMin;
 
+        totalEnemies++;
+        GameObject.Instantiate(spawnData.enemyPrefab, getRandomSpawn(), transform.rotation, gameObject.transform);
     }
 
 	// Update is called once per frame
 	void Update()
 	{
+		currentTime += Time.deltaTime;
 		
+        if (currentTime - timeOffset >= timeInterval && totalEnemies <= spawnData.totalEnemies)
+		{
+			GameObject.Instantiate(spawnData.enemyPrefab, getRandomSpawn(), transform.rotation, gameObject.transform);
+			timeOffset = currentTime;
+            totalEnemies++;
+            getRandomSpawn();
+			
+        }
+
 	}
 
-	private void getRandomSpawn()
+	private Vector3 getRandomSpawn()
 	{
-		bool aboveGround = false;
-
-		
 		float radius = UnityEngine.Random.value;
 		radius *= spawnData.radius;
 
@@ -49,11 +65,35 @@ public class enemySpawnerController : MonoBehaviour
 			ySpawn *= -1;
 		}
 
-		Debug.Log(randomYAngle);
-		Debug.Log(radius);
-		Debug.Log(xSpawn);
-		Debug.Log(ySpawn);
+		return checkPosition(xSpawn, ySpawn);
 	}
 
-	
+	private Vector3 checkPosition(float x, float y)
+	{
+		bool gotPoint = false;
+		RaycastHit hit;
+		Vector3 position = new Vector3(x, 0, y);
+
+		while (!gotPoint)
+		{
+			
+			var raycast = Physics.Raycast(new Vector3( x, 0, y), Vector3.up, out hit, Mathf.Infinity, ground);
+			if (Physics.Raycast(new Vector3(x, 0, y), Vector3.up, out hit, Mathf.Infinity, ground)) 
+			{
+				position = hit.point;
+				gotPoint = true;
+			} 
+			else if (Physics.Raycast(new Vector3(x, 0, y), Vector3.down, out hit, Mathf.Infinity, ground))
+			{
+				position = hit.point;
+				gotPoint = true;
+			}
+			else
+			{
+				Debug.Log("Not good");
+			}
+		}
+		
+		return position;
+	}
 }

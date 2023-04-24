@@ -7,9 +7,8 @@ public class spawner : ScriptableObject
 {
     [Header("enemyStuff")]
     public GameObject enemyPrefab;
-    public int frequency;
+    public int EnemiesPerMin;
     public int totalEnemies;
-    public int maxAmount;
 
     [Header("size")]
     public float radius;
