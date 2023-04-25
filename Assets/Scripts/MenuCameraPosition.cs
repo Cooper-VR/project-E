@@ -11,20 +11,6 @@ public class MenuCameraPosition : MonoBehaviour
 {
     public GameObject MainCamera;
 
-    //Unused Code:
-    /*
-    [SerializeField] GameObject MainPos;
-    [SerializeField] GameObject MainAng;
-    [SerializeField] GameObject PlayPos;
-    [SerializeField] GameObject PlayAng;
-    [SerializeField] GameObject ConfigPos;
-    [SerializeField] GameObject ConfigAng;
-    [SerializeField] GameObject GraphPos;
-    [SerializeField] GameObject GraphAng;
-    [SerializeField] GameObject ControlPos;
-    [SerializeField] GameObject ControlAng;
-    */
-
     [SerializeField] GameObject MainScreen;
     [SerializeField] GameObject ConfigScreen;
     [SerializeField] GameObject PlayScreen;
@@ -37,7 +23,14 @@ public class MenuCameraPosition : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera Graphics;
     [SerializeField] CinemachineVirtualCamera Controls;
 
-    [SerializeField] GameObject[] screens = new GameObject[5]; 
+    [SerializeField] GameObject[] screens = new GameObject[5];
+
+
+    IEnumerator BelndDelay(int index)
+    {
+        yield return new WaitForSeconds(0.75f);
+        ChangeUI(index);
+    }
 
     void Start()
     {
@@ -46,7 +39,9 @@ public class MenuCameraPosition : MonoBehaviour
         screens[2] = PlayScreen;
         screens[3] = GraphicsScreen;
         screens[4] = ControlsScreen;
-        ToMain(0);
+        MainMenuCameraSwitch.SwitchCamera(Main);
+        ClearUI();
+        ChangeUI();
     }
 
     private void OnEnable()
@@ -74,7 +69,6 @@ public class MenuCameraPosition : MonoBehaviour
             if (i == screen)
             {
                 screens[i].SetActive(true);
-                Debug.Log(screens[screen].ToString());
             }
             else
             {
@@ -90,55 +84,41 @@ public class MenuCameraPosition : MonoBehaviour
             screens[i].SetActive(false);
         }
     }
-}
 
     public void ToMain(int index = 0)
     {
-        //Unused Code:
-        //MainCamera.transform.position = MainPos.transform.position;
-        //MainCamera.transform.LookAt(MainAng.transform.position);
-        MainMenuCameraSwitch.SwitchCamera(Config);
+        MainMenuCameraSwitch.SwitchCamera(Main);
         ClearUI();
-        while (cameraScript.cinemachine.IsBlending) { yield return null; }
-        ChangeUI(index);
+        StartCoroutine(BelndDelay(index));
     }
 
     public void ToConfig(int index = 1)
     {
         MainMenuCameraSwitch.SwitchCamera(Config);
         ClearUI();
-        while (cameraScript.cinemachine.IsBlending) { yield return null; }
-        ChangeUI(index);
+        StartCoroutine(BelndDelay(index));
     }
 
     public void ToGraphics(int index = 3)
     {
-        //MainCamera.transform.position = GraphPos.transform.position;
-        //MainCamera.transform.LookAt(GraphAng.transform.position);
+
         MainMenuCameraSwitch.SwitchCamera(Graphics);
         ClearUI();
-        while (cameraScript.cinemachine.IsBlending) { yield return null; }
-        ChangeUI(index);
+        StartCoroutine(BelndDelay(index));
     }
 
     public void ToControls(int index = 4)
     {
-        //MainCamera.transform.position = ControlPos.transform.position;
-        //MainCamera.transform.LookAt(ControlAng.transform.position);
         MainMenuCameraSwitch.SwitchCamera(Controls);
         ClearUI();
-        while (cameraScript.cinemachine.IsBlending) { yield return null; }
-        ChangeUI(index);
+        StartCoroutine(BelndDelay(index));
     }
 
     public void ToPlay(int index = 2)
     {
-        //MainCamera.transform.position = PlayPos.transform.position;
-        //MainCamera.transform.LookAt(PlayAng.transform.position);
         MainMenuCameraSwitch.SwitchCamera(Play);
         ClearUI();
-        while (cameraScript.cinemachine.IsBlending) { yield return null; }
-        ChangeUI(index);
+        StartCoroutine(BelndDelay(index));
     }
 
     public void StartGame()

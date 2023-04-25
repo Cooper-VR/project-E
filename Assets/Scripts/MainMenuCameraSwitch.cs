@@ -30,12 +30,10 @@ public static class MainMenuCameraSwitch
     public static void Register(CinemachineVirtualCamera camera)
     {
         cameras.Add(camera);
-        Debug.Log("Registered " + camera.ToString());
     }
 
     public static void Unregister(CinemachineVirtualCamera camera)
     {
         cameras.Remove(camera);
-        Debug.Log("Unregistered " + camera.ToString());
     }
 }
