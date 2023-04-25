@@ -9,6 +9,6 @@ public class enemies : ScriptableObject
     public new string name;
     public int speed;
     public float maxHealth;
-
+    public int fireRate;
     public int damage;    
 }   

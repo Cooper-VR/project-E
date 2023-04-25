@@ -67,6 +67,9 @@ public class enemySpawnerController : MonoBehaviour
 			ySpawn *= -1;
 		}
 
+		xSpawn += transform.position.x;
+		ySpawn += transform.position.z;
+
 		return checkPosition(xSpawn, ySpawn);
 	}
 

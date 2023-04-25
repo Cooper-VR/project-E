@@ -22,10 +22,16 @@ public class bulletMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
 	{
+		enemyController controller;
 		timeInterval -= 2;
-		if (other.gameObject.tag == "enemy") 
+		if (other.gameObject.TryGetComponent<enemyController>(out controller)) 
 		{
-			other.gameObject.GetComponent<enemyController>().alterHP(5);
+			Debug.Log("dealDamage");
+			controller.alterHP(5);
+		}
+		else
+		{
+			Debug.Log("not enemey");
 		}
 		
 		Destroy(gameObject);

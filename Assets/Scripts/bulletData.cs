@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class bulletData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int publicDamge;
+
+    public float startTime;
+    public float endTime;
+    private int timeInterval = 5;
+    private void Update()
     {
-        
+        endTime = Time.time;
+        if (endTime - startTime > timeInterval)
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void Start()
+    {
+        startTime = Time.time;
+        endTime = Time.time;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision other)
     {
-        
+        timeInterval -= 2;
+
+        Destroy(gameObject);
+
     }
 }

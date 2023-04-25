@@ -14,6 +14,9 @@ public class Gun : MonoBehaviour
 	public GameObject Bullet;
 	public GameObject particleEffects;
 
+	private UnityEngine.ParticleSystem.MinMaxCurve emmisionAmount;
+
+	public ParticleSystem[] particles;
 
     float timeSinceLastShot;
     float particleTime = 0f;
@@ -25,7 +28,17 @@ public class Gun : MonoBehaviour
 		gunData.currentAmmo = gunData.magSize;
 		PlayerShoot.shootInput += Shoot;
 		PlayerShoot.reloadInput += StartReload;
-        particleEffects.SetActive(false);
+
+		for(int i = 0;  i < particles.Length; i++)
+		{
+			var yourParticleEmission = particles[i].emission;
+
+			yourParticleEmission.enabled = true;
+			emmisionAmount = yourParticleEmission.rateOverTime;
+			yourParticleEmission.rateOverTime = 0f;
+			
+
+        }
     }
 
 	private void OnDisable() => gunData.reloading = false;
@@ -56,9 +69,14 @@ public class Gun : MonoBehaviour
 		{
 			if (CanShoot())
 			{
-				particleEffects.SetActive(true);
-				ParticleSystem singleParticle = particleEffects.transform.GetChild(0).GetComponent<ParticleSystem>();
 
+                for (int i = 0; i < particles.Length; i++)
+                {
+                    var yourParticleEmission = particles[i].emission;
+
+                    yourParticleEmission.enabled = true;
+                    yourParticleEmission.rateOverTime = emmisionAmount;
+                }
 
                 GameObject newBullet = GameObject.Instantiate(Bullet, Muzzle.transform.position, Muzzle.transform.rotation);
 				Rigidbody rb = newBullet.GetComponent<Rigidbody>();
@@ -102,8 +120,14 @@ public class Gun : MonoBehaviour
 
 		if (particleCurrentTime - particleTime > gunData.particleCooldown)
 		{
-			particleEffects.SetActive(false);
-		}
+            for (int i = 0; i < particles.Length; i++)
+            {
+                var yourParticleEmission = particles[i].emission;
+
+                yourParticleEmission.enabled = true;
+                yourParticleEmission.rateOverTime = 0f;
+            }
+        }
     }
 
 	private void OnDestroy()

@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 5240704633488086780}
   - component: {fileID: 5240704633488086778}
   - component: {fileID: 5240704633488086782}
-  - component: {fileID: 3323693069888875750}
+  - component: {fileID: 5255777113167752567}
   m_Layer: 7
-  m_Name: flyTest
+  m_Name: shooter
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f0f4f21772ed8445b1ad7102e36ba8c, type: 2}
+  - {fileID: 2100000, guid: 174859ac7f906d947b3d783df398f7bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,8 +135,8 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 07f453c66283a2445a90e37a18b188da, type: 2}
   muzzle: {fileID: 2384045492531179659}
   projectile: {fileID: 1372459792764516902, guid: 036f8ea12df28a042bbc6a6e38ed1ff0, type: 3}
-  projectileSpeed: 1600
-  enemyTypes: 1
+  projectileSpeed: 2400
+  enemyTypes: 2
 --- !u!195 &5240704633488086782
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &3323693069888875750
+--- !u!136 &5255777113167752567
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

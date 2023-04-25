@@ -48,17 +48,20 @@ public class enemyController: MonoBehaviour
 		} else if (enemyTypes == enemyTypesEnum.flying)
 		{
 			flyerSet();
-		}
-	}
+		} else if (enemyTypes == enemyTypesEnum.shooting)
+		{
+			sooterSet();
+        }
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 	private void zombieSet()
 	{
 		agent.destination = GameObject.FindGameObjectWithTag("Player").transform.position;
-
-		if (health <= 0)
-		{
-			Destroy(gameObject);
-		}
 	}
 
 	private void flyerSet()
@@ -70,18 +73,38 @@ public class enemyController: MonoBehaviour
 		}
 		else
 		{
-			agent.destination = transform.position;
+			Vector3 mainPosition  = transform.position;
+			agent.destination = mainPosition;
+
 			currentTime += Time.deltaTime;
 			shootProjectile();
 		}
 	}
 
-	private void shootProjectile()
+    private void sooterSet()
+    {
+        if ((transform.position - GameObject.FindGameObjectWithTag("Player").transform.position).magnitude > 15f)
+        {
+            agent.destination = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+        }
+        else
+        {
+            Vector3 mainPosition = transform.position;
+            agent.destination = mainPosition;
+
+            currentTime += Time.deltaTime;
+            shootProjectile();
+        }
+    }
+
+    private void shootProjectile()
 	{
-		if (currentTime - previousTime >= 5f)
+
+		if (currentTime - previousTime >= (60 / enemyData.fireRate))
 		{
 			GameObject bullet = GameObject.Instantiate(projectile, muzzle.position, muzzle.rotation);
-			Vector3 positionDifference = transform.position - GameObject.FindGameObjectWithTag("Player").transform.position;
+			Vector3 positionDifference = GameObject.FindGameObjectWithTag("Player").transform.position - transform.position;
 
 			positionDifference = positionDifference.normalized;
 
@@ -94,7 +117,7 @@ public class enemyController: MonoBehaviour
 
 			direction *= 200;
 
-			rb.AddForce(direction * projectileSpeed);
+			rb.AddForce(positionDifference * projectileSpeed);
 		}
 
 		

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerStats : MonoBehaviour
@@ -35,12 +36,17 @@ public class playerStats : MonoBehaviour
         }
         else if (collision.gameObject.tag == "enemyBullet")
         {
-            
+            Debug.Log(collision.gameObject.tag);
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.gameObject.tag);
+        string tag = collision.gameObject.tag;
+
+        if (tag == "enemyBullet")
+        {
+            health -= collision.gameObject.GetComponent<bulletData>().publicDamge;
+        }
     }
 }
