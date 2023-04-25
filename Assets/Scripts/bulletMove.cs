@@ -26,12 +26,12 @@ public class bulletMove : MonoBehaviour
 		timeInterval -= 2;
 		if (other.gameObject.TryGetComponent<enemyController>(out controller)) 
 		{
-			Debug.Log("dealDamage");
+
 			controller.alterHP(5);
 		}
 		else
 		{
-			Debug.Log("not enemey");
+
 		}
 		
 		Destroy(gameObject);

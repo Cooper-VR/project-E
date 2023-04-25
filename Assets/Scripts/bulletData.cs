@@ -25,9 +25,5 @@ public class bulletData : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        timeInterval -= 2;
-
-        Destroy(gameObject);
-
     }
 }

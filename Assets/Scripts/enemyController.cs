@@ -103,6 +103,7 @@ public class enemyController: MonoBehaviour
 
 		if (currentTime - previousTime >= (60 / enemyData.fireRate))
 		{
+			Debug.Log("Shot");
 			GameObject bullet = GameObject.Instantiate(projectile, muzzle.position, muzzle.rotation);
 			Vector3 positionDifference = GameObject.FindGameObjectWithTag("Player").transform.position - transform.position;
 
