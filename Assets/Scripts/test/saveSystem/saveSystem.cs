@@ -4,6 +4,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class saveSystem
 {
+	/// <summary>
+	/// will save the player data in a fill in appdata
+	/// </summary>
+	/// <param name="playerData">the public data from the playerData script</param>
 	public static void saveData(playerStats playerData) 
 	{
 		BinaryFormatter formatter = new BinaryFormatter();
@@ -16,6 +20,10 @@ public static class saveSystem
 		stream.Close();
 	}
 
+	/// <summary>
+	/// will load the okayer data and return a playerData class with the loaded data
+	/// </summary>
+	/// <returns></returns>
 	public static playerData loadPlayer()
 	{
 		string path = Application.persistentDataPath + "/player.rsu";

@@ -51,10 +51,16 @@ public class playerStats : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// call this to load the data in this script, data saved is defined in the saveData script
+    /// </summary>
     public void savePlayer()
     {
         saveSystem.saveData(this);
     }
+    /// <summary>
+    /// call this to load the player data and apply it
+    /// </summary>
     public void loadPlayer()
     {
         playerData data = saveSystem.loadPlayer();
