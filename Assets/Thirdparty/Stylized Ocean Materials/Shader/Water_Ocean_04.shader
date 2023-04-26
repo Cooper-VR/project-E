@@ -64,7 +64,7 @@ Shader "Water/Ocean_04" {
 ////// Emissive:
                 float4 node_3702 = _Time;
                 float node_1855_ang = _WaterOrientation;
-                float node_1855_spd = 1.0;
+                float node_1855_spd = 1;
                 float node_1855_cos = cos(node_1855_spd*node_1855_ang);
                 float node_1855_sin = sin(node_1855_spd*node_1855_ang);
                 float2 node_1855_piv = float2(0.5,0.5);

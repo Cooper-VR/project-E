@@ -6,6 +6,8 @@ public class enemySpawnerController : MonoBehaviour
 	public spawner spawnData;
 	public LayerMask ground;
 
+	public TerrainCollider terrainCollider;
+
     #region private variables
     private int timeInterval;
 	private float currentTime = 0;
@@ -85,24 +87,30 @@ public class enemySpawnerController : MonoBehaviour
 		RaycastHit hit;
 		Vector3 position = new Vector3(x, 0, y);
 
-		while (!gotPoint)
+		int iterations = 0;
+
+		while (!gotPoint || iterations < 50)
 		{
-			var raycast = Physics.Raycast(new Vector3( x, 0, y), Vector3.up, out hit, Mathf.Infinity, ground);
-			if (Physics.Raycast(new Vector3(x, 0, y), Vector3.up, out hit, Mathf.Infinity, ground)) 
+			if (Physics.Raycast(new Vector3(x, 0, y), Vector3.up, out hit, Mathf.Infinity)) 
 			{
 				position = hit.point;
 				gotPoint = true;
 			} 
-			else if (Physics.Raycast(new Vector3(x, 0, y), Vector3.down, out hit, Mathf.Infinity, ground))
+			else if (Physics.Raycast(new Vector3(x, 0, y), Vector3.down, out hit, Mathf.Infinity))
 			{
 				position = hit.point;
 				gotPoint = true;
 			}
 			else
 			{
-				Debug.Log("Not good");
+                position = terrainCollider.ClosestPoint(new Vector3(x, 0, y));
+				gotPoint = true;
+
+                Debug.Log(position);
 			}
-		}
+			iterations++;
+
+        }
 		
 		return position;
 	}
