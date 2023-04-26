@@ -6,6 +6,7 @@ using UnityEngine;
 public class playerStats : MonoBehaviour
 {
     public int health;
+    public int level;
     private float totalTime;
     // Start is called before the first frame update
     void Start()
@@ -48,5 +49,32 @@ public class playerStats : MonoBehaviour
         {
             health -= collision.gameObject.GetComponent<bulletData>().publicDamge;
         }
+    }
+
+    public void savePlayer()
+    {
+        saveSystem.saveData(this);
+    }
+    public void loadPlayer()
+    {
+        playerData data = saveSystem.loadPlayer();
+
+        level = data.level;
+        health = data.health;
+
+        Vector3 position = new Vector3();
+
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+
+        transform.position = position;
+
+        Quaternion rotation = new Quaternion();
+
+        rotation.w = data.rotation[0];
+        rotation.x = data.rotation[1];
+        rotation.y = data.rotation[2];
+        rotation.z = data.rotation[3];
     }
 }
