@@ -19,7 +19,6 @@ public static class saveSystem
 	public static playerData loadPlayer()
 	{
 		string path = Application.persistentDataPath + "/player.rsu";
-		Debug.Log(path);
 		if (File.Exists(path))
 		{
 			BinaryFormatter formatter = new BinaryFormatter();
