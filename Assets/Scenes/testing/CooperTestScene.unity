@@ -641,6 +641,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5626910273517164313, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
+      propertyPath: Keys.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626910273517164313, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
+      propertyPath: Keys.Array.data[2]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626910273517164313, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
+      propertyPath: Weapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626910273517164313, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
+      propertyPath: Weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 2078056728}
+    - target: {fileID: 6760782330494648245, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
 --- !u!1 &906851611
@@ -780,7 +800,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 97f38f65c4cd6404d9fd5e4a42d884c5, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 7213233a62608324cb35939a1083e62c, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1178698827
 Transform:
@@ -861,3 +881,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2078056728 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 706948734752703956, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
+  m_PrefabInstance: {fileID: 884419428}
+  m_PrefabAsset: {fileID: 0}
