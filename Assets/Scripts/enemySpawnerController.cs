@@ -95,7 +95,6 @@ public class enemySpawnerController : MonoBehaviour
 	/// <returns>a new valid point for the spawn</returns>
 	private Vector3 checkPosition(float x, float y)
 	{
-		bool gotPoint = false;
 		RaycastHit hit;
 		Vector3 position = new Vector3(x, 0, y);
 		Ray ray = new Ray(position, Vector3.up);
@@ -104,12 +103,10 @@ public class enemySpawnerController : MonoBehaviour
 		if (Physics.Raycast(new Vector3(x, 0, y), Vector3.up, out hit, Mathf.Infinity)) 
 		{
 			position = hit.point;
-			gotPoint = true;
 		} 
 		else if (Physics.Raycast(new Vector3(x, 0, y), Vector3.down, out hit, Mathf.Infinity))
 		{
 			position = hit.point;
-			gotPoint = true;
 		}
 		else
 		{
