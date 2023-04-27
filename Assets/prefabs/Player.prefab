@@ -399,6 +399,7 @@ GameObject:
   - component: {fileID: 4718100479268714342}
   - component: {fileID: 4718100479268714343}
   - component: {fileID: 4718100479268714336}
+  - component: {fileID: 2843682975022580667}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -576,6 +577,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reloadKey: 114
+--- !u!114 &2843682975022580667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4718100479268714360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &4718100479345896120
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +722,7 @@ MonoBehaviour:
   cam: {fileID: 4718100477803939331}
   Muzzle: {fileID: 4718100479132679841}
   Bullet: {fileID: 7622915428474892921, guid: bfe793e47973603409b9c5972158ce85, type: 3}
-  bulletSpeed: 35000
+  particleEffects: {fileID: 0}
 --- !u!1 &4718883513016329833
 GameObject:
   m_ObjectHideFlags: 0
