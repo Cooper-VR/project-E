@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class WeaponSway : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] FirstPersonController firstPersonController;
+
 
     [Header("Sway Settings")]
     [SerializeField] private float speed;
@@ -21,8 +24,14 @@ public class WeaponSway : MonoBehaviour
 
         Quaternion rotationX = Quaternion.AngleAxis(-mouseY, Vector3.right);
         Quaternion rotationY = Quaternion.AngleAxis(mouseX, Vector3.up);
+        Quaternion rotationZ = Quaternion.AngleAxis(-mouseX, Vector3.forward);
 
-        Quaternion targetRotation = rotationX * rotationY;
+        if (firstPersonController.isCrouching)
+        {
+            rotationZ = Quaternion.AngleAxis(60, Vector3.forward);
+        }
+
+        Quaternion targetRotation = rotationX * rotationY * rotationZ;
 
         transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, speed * Time.deltaTime);
     }

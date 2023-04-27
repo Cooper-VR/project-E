@@ -56,14 +56,14 @@ public class WallRun : MonoBehaviour
         constantForceObject = GetComponent<ConstantForce>();
         gravityForce = constantForceObject.relativeForce.y;
 
-        int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
+        int layerMask = ~(1 << LayerMask.NameToLayer("player"));
     }
 
     void CheckWall()
     {
         //FirstPersonController.
 
-        int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
+        int layerMask = ~(1 << LayerMask.NameToLayer("player"));
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallDistance, layerMask);
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallHit, wallDistance, layerMask);
     }

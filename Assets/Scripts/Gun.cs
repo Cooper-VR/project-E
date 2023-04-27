@@ -41,7 +41,12 @@ public class Gun : MonoBehaviour
         }
     }
 
-	private void OnDisable() => gunData.reloading = false;
+	private void OnDisable()
+	{
+		gunData.reloading = false;
+		PlayerShoot.shootInput -= Shoot;
+		PlayerShoot.reloadInput -= StartReload;
+	}
 
 	public void StartReload()
 	{
