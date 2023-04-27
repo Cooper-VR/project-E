@@ -6,38 +6,41 @@ public class enemySpawnerController : MonoBehaviour
 	public spawner spawnData;
 	public LayerMask ground;
 
-	public TerrainCollider terrainCollider;
+	public Terrain terrainCollider;
 
-    #region private variables
-    private int timeInterval;
+	#region private variables
+	private int timeInterval;
 	private float currentTime = 0;
 	private float timeOffset;
 	private int totalEnemies = 0;
-    #endregion
+	#endregion
 
 
-    void Start()
+	void Start()
 	{
 		getRandomSpawn();
 		timeInterval = 60 / spawnData.EnemiesPerMin;
 
-        totalEnemies++;
-        GameObject.Instantiate(spawnData.enemyPrefab, getRandomSpawn(), transform.rotation, gameObject.transform);
-    }
+		totalEnemies++;
+		GameObject.Instantiate(spawnData.enemyPrefab, getRandomSpawn(), transform.rotation, gameObject.transform);
+	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		currentTime += Time.deltaTime;
 		
-        if (currentTime - timeOffset >= timeInterval && totalEnemies <= spawnData.totalEnemies)
+		if (currentTime - timeOffset >= timeInterval && totalEnemies <= spawnData.totalEnemies)
 		{
-			GameObject.Instantiate(spawnData.enemyPrefab, getRandomSpawn(), transform.rotation, gameObject.transform);
-			timeOffset = currentTime;
-            totalEnemies++;
-            getRandomSpawn();
-			
-        }
+			Vector3 spawn = getRandomSpawn();
+
+			if (spawn != new Vector3(0, -1 ,0)) 
+			{
+				GameObject.Instantiate(spawnData.enemyPrefab, spawn, transform.rotation, gameObject.transform);
+				timeOffset = currentTime;
+				totalEnemies++;
+            }
+		}
 
 	}
 
@@ -72,7 +75,16 @@ public class enemySpawnerController : MonoBehaviour
 		xSpawn += transform.position.x;
 		ySpawn += transform.position.z;
 
-		return checkPosition(xSpawn, ySpawn);
+		
+		Vector3 newPosition = checkPosition(xSpawn, ySpawn);
+
+		if (newPosition == new Vector3(0, -1, 0)) 
+		{ 
+			return new Vector3(0, -1, 0); 
+		} else 
+		{
+			return newPosition;
+		}
 	}
 
 	/// <summary>
@@ -86,37 +98,35 @@ public class enemySpawnerController : MonoBehaviour
 		bool gotPoint = false;
 		RaycastHit hit;
 		Vector3 position = new Vector3(x, 0, y);
+		Ray ray = new Ray(position, Vector3.up);
 
-		int iterations = 0;
-
-		while (!gotPoint || iterations < 50)
+		
+		if (Physics.Raycast(new Vector3(x, 0, y), Vector3.up, out hit, Mathf.Infinity)) 
 		{
-			if (Physics.Raycast(new Vector3(x, 0, y), Vector3.up, out hit, Mathf.Infinity)) 
-			{
-				position = hit.point;
-				gotPoint = true;
-			} 
-			else if (Physics.Raycast(new Vector3(x, 0, y), Vector3.down, out hit, Mathf.Infinity))
-			{
-				position = hit.point;
-				gotPoint = true;
-			}
-			else
-			{
-                position = terrainCollider.ClosestPoint(new Vector3(x, 0, y));
-				gotPoint = true;
+			position = hit.point;
+			gotPoint = true;
+		} 
+		else if (Physics.Raycast(new Vector3(x, 0, y), Vector3.down, out hit, Mathf.Infinity))
+		{
+			position = hit.point;
+			gotPoint = true;
+		}
+		else
+		{
+            float height = terrainCollider.SampleHeight(position);
 
-                Debug.Log(position);
+			if (height == 0)
+			{
+				return new Vector3(0, -1, 0);
 			}
-			iterations++;
-
+			position.y = height;
         }
 		
 		return position;
 	}
 
-    private void OnDrawGizmos()
-    {
+	private void OnDrawGizmos()
+	{
 		Gizmos.DrawWireSphere(transform.position, spawnData.radius);
-    }
+	}
 }
