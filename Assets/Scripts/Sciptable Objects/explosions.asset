@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2b39997fe39d54e88a17a6c7e143cc, type: 3}
   m_Name: explosions
   m_EditorClassIdentifier: 
-  radius: 20
+  radius: 2
   closestDamage: 20
   farthestDamage: 2
