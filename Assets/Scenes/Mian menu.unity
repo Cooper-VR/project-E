@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571385, b: 0.30692253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1359,11 +1359,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285684922}
         m_TargetAssemblyTypeName: MenuCameraPosition, Assembly-CSharp
-        m_MethodName: ToMain
-        m_Mode: 3
+        m_MethodName: ChangeScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1785866144}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2017,23 +2017,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc463c79839128468b574a65c70e6b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCamera: {fileID: 1292668682}
-  MainScreen: {fileID: 1158460227}
-  ConfigScreen: {fileID: 1785866144}
-  PlayScreen: {fileID: 198921908}
-  GraphicsScreen: {fileID: 309135048}
-  ControlsScreen: {fileID: 142205341}
-  Main: {fileID: 890848284}
-  Config: {fileID: 1469053143}
-  Play: {fileID: 351616204}
-  Graphics: {fileID: 1236661305}
-  Controls: {fileID: 1464524431}
-  screens:
+  Screens:
   - {fileID: 1158460227}
   - {fileID: 1785866144}
   - {fileID: 198921908}
   - {fileID: 309135048}
   - {fileID: 142205341}
+  Cameras:
+  - {fileID: 890848284}
+  - {fileID: 1469053143}
+  - {fileID: 351616204}
+  - {fileID: 1236661305}
+  - {fileID: 1464524431}
 --- !u!4 &285684923
 Transform:
   m_ObjectHideFlags: 0
@@ -2637,11 +2632,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285684922}
         m_TargetAssemblyTypeName: MenuCameraPosition, Assembly-CSharp
-        m_MethodName: ToControls
-        m_Mode: 3
+        m_MethodName: ChangeScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 142205341}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2787,11 +2782,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285684922}
         m_TargetAssemblyTypeName: MenuCameraPosition, Assembly-CSharp
-        m_MethodName: ToMain
-        m_Mode: 3
+        m_MethodName: ChangeScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1158460227}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5016,11 +5011,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285684922}
         m_TargetAssemblyTypeName: MenuCameraPosition, Assembly-CSharp
-        m_MethodName: ToPlay
-        m_Mode: 3
+        m_MethodName: ChangeScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 198921908}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5866,11 +5861,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285684922}
         m_TargetAssemblyTypeName: MenuCameraPosition, Assembly-CSharp
-        m_MethodName: ToGraphics
-        m_Mode: 3
+        m_MethodName: ChangeScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 309135048}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11703,11 +11698,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285684922}
         m_TargetAssemblyTypeName: MenuCameraPosition, Assembly-CSharp
-        m_MethodName: ToMain
-        m_Mode: 3
+        m_MethodName: ChangeScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1158460227}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13052,7 +13047,7 @@ GameObject:
   - component: {fileID: 1158460230}
   - component: {fileID: 1158460229}
   m_Layer: 5
-  m_Name: TitleMenu
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21304,11 +21299,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285684922}
         m_TargetAssemblyTypeName: MenuCameraPosition, Assembly-CSharp
-        m_MethodName: ToMain
-        m_Mode: 3
+        m_MethodName: ChangeScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1785866144}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -22530,11 +22525,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285684922}
         m_TargetAssemblyTypeName: MenuCameraPosition, Assembly-CSharp
-        m_MethodName: ToConfig
-        m_Mode: 3
+        m_MethodName: ChangeScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1785866144}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
