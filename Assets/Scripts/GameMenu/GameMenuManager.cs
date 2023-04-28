@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameMenuManager : MonoBehaviour
@@ -25,6 +26,7 @@ public class GameMenuManager : MonoBehaviour
 
     void Start()
     {
+        //When the scene starts we want to see if the player is new, if so iniate newplayer portocol if else load their save data
         try
         {
             ProfileName.text = "Profile";
@@ -35,19 +37,7 @@ public class GameMenuManager : MonoBehaviour
         }
         if (new_player)
         {
-            for (int i = 0; i < Menus.Length; i++)
-            {
-                Debug.Log(Menus[i].ToString());
-                if (Menus[i].ToString() == "NewPlayer" || i == 3 || Menus[i].ToString() == "Background" || i == 0)
-                {
-                    
-                    Menus[i].SetActive(true);
-                }
-                else
-                {
-                    Menus[i].SetActive(false);
-                }
-            }
+            SwitchMenu(3);
         }
     }
 
@@ -57,18 +47,20 @@ public class GameMenuManager : MonoBehaviour
         
     }
 
-    private void SwitchMenu(string menu)
+    private void SwitchMenu(int menu)
     {
-        for (int i = 0; i < Menus.Length; i++)
+        //This function switches the menu panels
+        for (int i = 1; i < Menus.Length; i++)
         {
-            Debug.Log(Menus[i].ToString());
-            if (Menus[i].ToString() == "NewPlayer")
+            if (i == menu)
             {
-
                 Menus[i].SetActive(true);
+                Debug.Log(Menus[i]);
+                Debug.Log(i == menu);
+                break;
             }
-            else
-            {
+            else 
+            { 
                 Menus[i].SetActive(false);
             }
         }
@@ -76,11 +68,14 @@ public class GameMenuManager : MonoBehaviour
 
     public void OnSubmit()
     {
+        //this function runs on submit to check if the user created a valid name and how to procceed. 
+
         if (CheckValidity())
         {
             Debug.Log("Register Acount");
             Menus[3].SetActive(false);
             ProfileName.text = UsernameField.text;
+            SwitchMenu(1);
         }
     }
     
