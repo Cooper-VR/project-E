@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,36 +19,42 @@ public class explosionDamager : MonoBehaviour
 		for (int i = 0; i < particles.Length; i++)
 		{
 			particles[i].transform.localScale *= multiplier;
-			ParticleSystem particleSystem = particles[i].GetComponent<ParticleSystem>();
 
-            var emmition = particleSystem.emission;
+            ParticleSystem.EmissionModule emission = particles[i].GetComponent<ParticleSystem>().emission;
 
-			//change burst count based on multiplier
+            // Get the current burst settings
+            int burstCount = emission.burstCount;
+            ParticleSystem.Burst[] bursts = new ParticleSystem.Burst[burstCount];
+            emission.GetBursts(bursts);
+
+            // Increase the burst amount for each burst setting
+            for (int x = 0; x < burstCount; x++)
+            {
+                ParticleSystem.Burst burst = bursts[x];
+                ParticleSystem.MinMaxCurve newCount = new ParticleSystem.MinMaxCurve(burst.count.constant * multiplier);
+                burst.count = newCount;
+                bursts[x] = burst;
+            }
+
+            // Set the updated burst settings
+            emission.SetBursts(bursts);
+            //change burst count based on multiplier
         }
     }
 
     public void onExplosions()
 	{
-		Object[] tempList = Resources.FindObjectsOfTypeAll(typeof(GameObject));
-		List<GameObject> realList = new List<GameObject>();
-		GameObject temp;
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
+		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-		foreach (Object obj in tempList)
-		{
-			if (obj is GameObject)
-			{
-				temp = (GameObject)obj;
-				if (temp.hideFlags == HideFlags.None)
-					realList.Add((GameObject)obj);
-			}
-		}
-		GameObject[] gameObjects = realList.ToArray();
+		GameObject[] allDamagers = enemies.Concat(players).ToArray();
 
-		for (int i = 0; i < gameObjects.Length; i++)
+
+		for (int i = 0; i < allDamagers.Length; i++)
 		{
-			if (gameObjects[i].tag == "Player" || gameObjects[i].tag == "enemy")
+			if (allDamagers[i].tag == "Player" || allDamagers[i].tag == "enemy")
 			{
-				float distance = (transform.position - gameObjects[i].transform.position).magnitude;
+				float distance = (transform.position - allDamagers[i].transform.position).magnitude;
 
 				if (distance < explosionData.radius)
 				{
@@ -57,11 +65,11 @@ public class explosionDamager : MonoBehaviour
 					playerStats player = new playerStats();
 					enemyController enemyData = new enemyController();
 
-					if (gameObjects[i].TryGetComponent<playerStats>(out player))
+					if (allDamagers[i].TryGetComponent<playerStats>(out player))
 					{
 						Debug.Log(distance);
 						player.health -= (int)damage;
-					} else if (gameObjects[i].TryGetComponent<enemyController>(out enemyData))
+					} else if (allDamagers[i].TryGetComponent<enemyController>(out enemyData))
 					{
                         Debug.Log(distance);
                         enemyData.alterHP(damage);
