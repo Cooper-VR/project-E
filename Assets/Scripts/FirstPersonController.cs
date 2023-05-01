@@ -137,13 +137,6 @@ public class FirstPersonController : MonoBehaviour
             horizontalMovement = 0f;
         }
 
-        if (isCrouching && (WallRun.wallLeft || WallRun.wallRight))
-        {
-        }
-        else
-        {
-        }
-
 
         verticalMovement = verticalMovement = Input.GetAxisRaw("Vertical");
 

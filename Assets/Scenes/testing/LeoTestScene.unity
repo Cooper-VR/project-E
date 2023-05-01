@@ -611,6 +611,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  terrainCollider: {fileID: 0}
 --- !u!198 &778302285 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4465519555912684558, guid: ad540088bdd6f504cbe13347069fd868, type: 3}
@@ -693,6 +694,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  terrainCollider: {fileID: 0}
 --- !u!4 &1162075296
 Transform:
   m_ObjectHideFlags: 0
@@ -2093,7 +2095,7 @@ MonoBehaviour:
   - {fileID: 1581391962}
   - {fileID: 2078056728}
   Keys: 3100000032000000
-  switchtime: 0.25
+  switchtime: 0.05
 --- !u!114 &5626910274377989246
 MonoBehaviour:
   m_ObjectHideFlags: 0
