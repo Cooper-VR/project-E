@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 410795348}
   m_Layer: 3
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -20716,6 +20716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6221fa05b8913446ac95db744b45628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrainCollider: {fileID: 0}
   explosionData: {fileID: 11400000, guid: 4ea029ef062038f40b005eee1b308a58, type: 2}
   rootParticle: {fileID: 1697422935}
   particles:
