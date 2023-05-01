@@ -4,16 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class explosionDamager : MonoBehaviour
 {
-	public explosionData explosionData;
+    public Terrain terrainCollider;
+    public explosionData explosionData;
 	public ParticleSystem rootParticle;
 	public GameObject[] particles = new GameObject[4];
 
     private void Start()
     {
-		rootParticle.enableEmission = false;
+        terrainCollider = GameObject.FindGameObjectWithTag("terrain").GetComponent<Terrain>();
+
 		float multiplier = explosionData.radius / 2f;
 
 		for (int i = 0; i < particles.Length; i++)
@@ -54,7 +57,9 @@ public class explosionDamager : MonoBehaviour
 		{
 			if (allDamagers[i].tag == "Player" || allDamagers[i].tag == "enemy")
 			{
-				float distance = (transform.position - allDamagers[i].transform.position).magnitude;
+                Vector3 position = checkPosition();
+
+                float distance = (position - allDamagers[i].transform.position).magnitude;
 
 				if (distance < explosionData.radius)
 				{
@@ -71,14 +76,40 @@ public class explosionDamager : MonoBehaviour
 						player.health -= (int)damage;
 					} else if (allDamagers[i].TryGetComponent<enemyController>(out enemyData))
 					{
-                        Debug.Log(distance);
                         enemyData.alterHP(damage);
 					}
 				}
 			}
 		}
-		
-		rootParticle.enableEmission = true;
-		rootParticle.Play();
-	}
+        rootParticle.Play();
+    }
+
+    private Vector3 checkPosition()
+    {
+        RaycastHit hit;
+        Vector3 position = transform.position;
+        Ray ray = new Ray(position, Vector3.up);
+
+
+        if (Physics.Raycast(position, Vector3.up, out hit, Mathf.Infinity))
+        {
+            position = hit.point;
+        }
+        else if (Physics.Raycast(position, Vector3.down, out hit, Mathf.Infinity))
+        {
+            position = hit.point;
+        }
+        else
+        {
+            float height = terrainCollider.SampleHeight(position);
+
+            if (height == 0)
+            {
+                return new Vector3(0, -1, 0);
+            }
+            position.y = height;
+        }
+
+        return position;
+    }
 }

@@ -10,5 +10,8 @@ public class enemies : ScriptableObject
     public int speed;
     public float maxHealth;
     public int fireRate;
-    public int damage;    
+    public int damage;
+    public float explotionRadius;
+    public float explotionProximity;
+    public float explotionDelay;
 }   
