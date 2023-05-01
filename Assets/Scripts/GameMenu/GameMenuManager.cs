@@ -88,7 +88,7 @@ public class GameMenuManager : MonoBehaviour
         string Username = UsernameField.text;
 
         //Check username validity return the result. 
-        if (Username.Length >= 10 || Username == null || Username.Length == 1)
+        if (Username.Length >= 15 || Username == null || Username.Length == 1)
         {
             ErrorText.SetActive(true);
             return false;
