@@ -16,6 +16,9 @@ public class weaponSwitch : MonoBehaviour
 	private int selectedWeapon;
 	private float timeSinceSwitch;
 
+	public bool shooting;
+	private GameObject currentWeapon;
+
 
     private void Start()
     {
@@ -26,7 +29,11 @@ public class weaponSwitch : MonoBehaviour
 
     private void Update()
     {
-		int previousSelection = selectedWeapon;
+		Gun gunScripts = currentWeapon.gameObject.GetComponent<Gun>();
+		shooting = gunScripts.shooting;
+
+
+        int previousSelection = selectedWeapon;
 
 		for (int i = 0; i < Keys.Length; i++)
 		{
@@ -51,7 +58,8 @@ public class weaponSwitch : MonoBehaviour
 		for (int i = 0; i < transform.childCount; i++) 
 		{
 			Weapons[i] = transform.GetChild(i);
-		}
+
+        }
 
 		if (Keys == null)
 		{
@@ -64,7 +72,12 @@ public class weaponSwitch : MonoBehaviour
 		for (int i = 0; i < Weapons.Length; i++)
 		{
 			Weapons[i].gameObject.SetActive(i == weaponIndex);
-		}
+			if (i == weaponIndex)
+			{
+                currentWeapon = Weapons[i].gameObject;
+            }
+
+        }
 
 		timeSinceSwitch = 0;
 

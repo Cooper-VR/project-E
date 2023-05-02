@@ -14,6 +14,8 @@ public class Gun : MonoBehaviour
 	public GameObject Bullet;
 	public GameObject particleEffects;
 
+	public bool shooting;
+
 	private UnityEngine.ParticleSystem.MinMaxCurve emmisionAmount;
 
 	public ParticleSystem[] particles;
@@ -95,9 +97,9 @@ public class Gun : MonoBehaviour
 
 				particleTime = Time.time;
 				particleCurrentTime = Time.time;
-
+                shooting = true;
                 OnGunShot();
-			}
+			} else shooting = false;
 		}
 	}
 
