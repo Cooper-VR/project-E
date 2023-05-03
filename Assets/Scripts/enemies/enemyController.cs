@@ -81,6 +81,7 @@ public class enemyController: MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+			AugmentManager.AddPoints();
         }
     }
 

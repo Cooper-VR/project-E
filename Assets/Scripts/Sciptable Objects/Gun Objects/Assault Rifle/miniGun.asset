@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: miniGun
   m_EditorClassIdentifier: 
   name: Assault Rifle
-  speed: 400
+  speed: 10
   damageAmount: 7
   canADS: 0
   maxDistance: 200
-  currentAmmo: 941
+  currentAmmo: 975
   magSize: 1000
   fireRate: 1200
   reloadTime: 3
