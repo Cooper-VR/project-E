@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  level: 0
 --- !u!136 &5626910272928460114
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -461,6 +462,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 5626910273084868710}
   controller: {fileID: 5626910272928460121}
+  offset: 0
+  head: {fileID: 0}
 --- !u!1 &5626910273517164292
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53dd68e88ab8a6e4ebdabe2860d5f604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstPersonController: {fileID: 5626910272928460121}
   speed: 8
   sensitivityMultiplier: 4
 --- !u!114 &5626910273517164313
