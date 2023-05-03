@@ -17,8 +17,8 @@ public class weaponSwitch : MonoBehaviour
 	private float timeSinceSwitch;
 
 	public bool shooting;
-	private GameObject currentWeapon;
-
+	public GameObject currentWeapon;
+	public GunData gunData;
 
     private void Start()
     {
@@ -29,6 +29,7 @@ public class weaponSwitch : MonoBehaviour
 
     private void Update()
     {
+		gunData = currentWeapon.GetComponent<Gun>().gunData;
 		Gun gunScripts = currentWeapon.gameObject.GetComponent<Gun>();
 		shooting = gunScripts.shooting;
 
