@@ -50,7 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FoamTexture:
         m_Texture: {fileID: 2800000, guid: 5f9b6fb959d19a241b3efbcaa90b5a77, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 4, y: 4}
         m_Offset: {x: 0, y: 0}
     - _Highlight:
         m_Texture: {fileID: 0}
@@ -106,7 +106,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _Noiselevel: 0.0872
+    - _Noiselevel: 0.0377
     - _OcclusionStrength: 1
     - _Opacity: 1
     - _Parallax: 0.02
