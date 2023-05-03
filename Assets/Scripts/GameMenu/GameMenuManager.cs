@@ -1,8 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Net;
 
 public class GameMenuManager : MonoBehaviour
 {
@@ -21,12 +24,20 @@ public class GameMenuManager : MonoBehaviour
     public TMP_Text UsernameField;
     public TMP_Text ProfileName;
     public GameObject ErrorText;
+    public Image ProfileBackground;
+    public Image ProfileAvatar;
+    public Image ProfileBackground2;
+    public Image ProfileAvatar2;
 
     public GameObject[] Menus;
+    [SerializeField] Sprite[] Avatars;
+
+    int index = 0;
 
     void Start()
     {
         //When the scene starts we want to see if the player is new, if so iniate newplayer portocol if else load their save data
+        ProfileAvatar.sprite = Avatars[index];
         try
         {
             ProfileName.text = "Profile";
@@ -44,7 +55,8 @@ public class GameMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ProfileBackground2.color = ProfileBackground.color;
+        ProfileAvatar2.sprite = ProfileAvatar.sprite;
     }
 
     private void SwitchMenu(int menu)
@@ -98,5 +110,26 @@ public class GameMenuManager : MonoBehaviour
             ErrorText.SetActive(false);
             return true;
         }
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void ChangeBGColor()
+    {
+        Color32 Color = UnityEngine.Random.ColorHSV();
+        ProfileBackground.color = Color;
+    }
+
+    public void ChangeAvatar()
+    {
+        index += 1;
+        if (index > Avatars.Length)
+        {
+            index = 0;
+        }
+        ProfileAvatar.sprite = Avatars[index];
     }
 }
