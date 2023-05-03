@@ -1397,13 +1397,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5626910272928460126, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.7
+      value: 4.699997
       objectReference: {fileID: 0}
     - target: {fileID: 5626910272928460126, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.9
+      value: 10.899998
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5626910272928460126, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626910272928460126, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626910272928460126, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626910272928460126, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3061845632370360116, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bfd852ea2a2e69b4d843431b5b07d2eb, type: 3}
 --- !u!1001 &740888794
 PrefabInstance:
@@ -1599,6 +1616,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  terrainCollider: {fileID: 0}
 --- !u!1 &787400373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,6 +2437,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  terrainCollider: {fileID: 0}
 --- !u!4 &1162075296
 Transform:
   m_ObjectHideFlags: 0
