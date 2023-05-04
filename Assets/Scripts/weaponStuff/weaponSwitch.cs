@@ -29,6 +29,7 @@ public class weaponSwitch : MonoBehaviour
 
     private void Update()
     {
+		currentWeapon = transform.GetChild(0).gameObject;
 		gunData = currentWeapon.GetComponent<Gun>().gunData;
 		Gun gunScripts = currentWeapon.gameObject.GetComponent<Gun>();
 		shooting = gunScripts.shooting;

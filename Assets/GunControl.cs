@@ -21,7 +21,7 @@ public class GunControl : MonoBehaviour
 	{
 		gunData = gunSwitcher.GetComponent<weaponSwitch>().gunData;
 		shooting = gunSwitcher.GetComponent<weaponSwitch>().shooting;
-		moveGun(new Vector3());
+		
 
         if (Input.GetKeyDown(ADScode) && shooting)
 		{
@@ -52,16 +52,9 @@ public class GunControl : MonoBehaviour
 	{
 		Vector3 head;
 		head = movementAnimation.GetBoneTransform(HumanBodyBones.Head).position;
-        Vector3 neck;
-        neck = movementAnimation.GetBoneTransform(HumanBodyBones.Neck).position;
-        Vector3 chest;
-        chest = movementAnimation.GetBoneTransform(HumanBodyBones.Chest).position;
-        Vector3 spine;
-        spine = movementAnimation.GetBoneTransform(HumanBodyBones.Spine).position;
-        Vector3 hip;
-        hip = movementAnimation.GetBoneTransform(HumanBodyBones.Hips).position;
+        
 
-		float distance =  (head - neck).magnitude + (neck - chest).magnitude + (chest - spine).magnitude + (spine - hip).magnitude + (hip - transform.position).magnitude;
+		float distance =  (head - transform.position).magnitude;
 		height = distance;
 
 
@@ -72,7 +65,7 @@ public class GunControl : MonoBehaviour
 
 		position.y = yPostion;
 
-        triggerTarget.transform.localPosition = position;
+        
 
         GameObject weapon = gunSwitcher.GetComponent<weaponSwitch>().currentWeapon;
 		weapon.transform.position = position;
