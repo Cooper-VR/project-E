@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea802cb30a0c60847921586457dfb961, type: 3}
   m_Name: enemySpawner
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5240704633488086776, guid: d3411b2757b2b954aa6df38ae980a59b, type: 3}
-  EnemiesPerMin: 5
-  totalEnemies: 20
+  enemyPrefab: {fileID: 5240704633488086776, guid: f16664cd9f8858e4fb68855f52681f75, type: 3}
+  EnemiesPerMin: 25
+  totalEnemies: 60
   radius: 20

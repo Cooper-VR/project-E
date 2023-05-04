@@ -17,7 +17,6 @@ public class AugmentManager : MonoBehaviour
         CurrentPoints += UnityEngine.Random.Range(1, 3);
         if (CurrentPoints >= CurrentThreshHold) 
         {
-            Debug.Log("Got Augment!");
             CurrentThreshHold = (int)Math.Round(CurrentThreshHold * 1.75);
         }
     }
