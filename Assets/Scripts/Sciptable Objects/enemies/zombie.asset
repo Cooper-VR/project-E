@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: zombie
   m_EditorClassIdentifier: 
   name: zombie
-  speed: 4
-  maxHealth: 50
+  speed: 12
+  maxHealth: 25
   fireRate: 0
   damage: 20
   explotionRadius: 0

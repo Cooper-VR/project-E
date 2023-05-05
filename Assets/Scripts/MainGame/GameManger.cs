@@ -1,13 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManger : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject Menu;
+    public GameObject Alert;
+    bool AlertAugment;
+
     void Start()
     {
-        AugmentManager.StartCount();
+       AlertAugment = false;
+       AugmentManager.StartCount();
+       Debug.Log(AugmentManager.AugmentsInReserve);
     }
-
+    void Update()
+    {
+        if (AugmentManager.AugmentsInReserve >= 1)
+        {
+            if (AlertAugment == false)
+            {
+                Alert.SetActive(true);
+                AlertAugment = true;
+            }
+            if (AlertAugment && AugmentManager.AugmentsInReserve < 1)
+            {
+                AlertAugment = false;
+            }
+            if (Alert.activeSelf && !Menu.activeSelf)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha7))
+                {
+                    Menu.SetActive(true);
+                }
+            }
+        }
+    }
+    
 }

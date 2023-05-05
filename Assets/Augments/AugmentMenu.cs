@@ -1,19 +1,18 @@
+using System;
 using UnityEngine;
 
 public class AugmentMenu : MonoBehaviour
 {
-    private Animation anim;
+    public Animation anim; 
 
     public GameObject Menu;
 
 
-
-    void Start()
+    private void Start()
     {
-        anim = gameObject.GetComponent<Animation>();
+        anim = Menu.GetComponent<Animation>();
     }
-
-    public void OpenMenu()
+    public void Awake()
     {
         Menu.SetActive(true);
         anim.Play("OpenMenu");
@@ -23,5 +22,17 @@ public class AugmentMenu : MonoBehaviour
     {
         anim.Play("CloseMenu");
         Menu.SetActive(false);
+    }
+
+    private void Update()
+    {
+        Debug.Log("Working");
+        if (Menu.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            { 
+                CloseMenu();
+            }
+        }
     }
 }

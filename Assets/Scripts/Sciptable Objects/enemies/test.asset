@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: test
   m_EditorClassIdentifier: 
   name: test
-  speed: 10
+  speed: 16
   maxHealth: 25
   fireRate: 0
   damage: 10
