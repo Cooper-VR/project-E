@@ -18,5 +18,5 @@ MonoBehaviour:
   fireRate: 0
   damage: 0
   explotionRadius: 20
-  explotionProximity: 0.3
+  explotionProximity: 2
   explotionDelay: 0.2
