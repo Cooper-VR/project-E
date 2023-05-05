@@ -2126,7 +2126,6 @@ GameObject:
   - component: {fileID: 643521169}
   - component: {fileID: 643521168}
   - component: {fileID: 643521170}
-  - component: {fileID: 643521171}
   - component: {fileID: 643521172}
   m_Layer: 5
   m_Name: AugmentMenu
@@ -2134,7 +2133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &643521167
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2216,23 +2215,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!111 &643521171
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643521166}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 89c0854468ef5b54f969a44dd9295bb2, type: 2}
-  - {fileID: 7400000, guid: 7dfd1953af428974c994576f2f8b3671, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &643521172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2245,8 +2227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c0eb899eb8f0040b6384e9ad5f52cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 643521171}
-  Menu: {fileID: 643521166}
 --- !u!1001 &740888794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2466,10 +2446,10 @@ RectTransform:
   m_Father: {fileID: 1718268629}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 93.46359, y: -194.34935}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &766181005
 MonoBehaviour:
@@ -3897,10 +3877,10 @@ RectTransform:
   m_Father: {fileID: 1718268629}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 263.4636, y: -194.34935}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1269389907
 MonoBehaviour:
@@ -4879,10 +4859,10 @@ RectTransform:
   m_Father: {fileID: 1718268629}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 433.4636, y: -194.34935}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1760535021
 MonoBehaviour:

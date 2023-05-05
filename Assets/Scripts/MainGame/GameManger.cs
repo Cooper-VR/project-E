@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GameManger : MonoBehaviour
 {
-    public GameObject Menu;
     public GameObject Alert;
     bool AlertAugment;
 
@@ -29,11 +28,11 @@ public class GameManger : MonoBehaviour
             {
                 AlertAugment = false;
             }
-            if (Alert.activeSelf && !Menu.activeSelf)
+            if (Alert.activeSelf && )
             {
                 if (Input.GetKeyDown(KeyCode.Alpha7))
                 {
-                    Menu.SetActive(true);
+                    AugmentMenu.OpenMenu();
                 }
             }
         }
