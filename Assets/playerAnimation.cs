@@ -54,7 +54,6 @@ public class playerAnimation : MonoBehaviour
 		}
 		else if (Input.GetKey(movement[2]))
 		{
-			Debug.Log(sideways);
 			sideways = 1;
 		}
 		else if (Input.GetKey(movement[3]))
@@ -78,9 +77,5 @@ public class playerAnimation : MonoBehaviour
 
         animator.SetFloat("sideWays", XTime);
         animator.SetFloat("forward", YTime);
-
-
-
-
     }
 }

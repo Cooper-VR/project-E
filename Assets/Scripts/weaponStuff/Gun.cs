@@ -99,9 +99,10 @@ public class Gun : MonoBehaviour
 				particleCurrentTime = Time.time;
                 shooting = true;
                 OnGunShot();
-			} else shooting = false;
+			} 
 		}
-	}
+        
+    }
 
 	private void Update()
 	{
@@ -113,7 +114,8 @@ public class Gun : MonoBehaviour
 		{
             Shoot();
 		}
-		if (Input.GetKeyDown(KeyCode.R))
+        else shooting = false;
+        if (Input.GetKeyDown(KeyCode.R))
 		{
 			StartReload();
         }
