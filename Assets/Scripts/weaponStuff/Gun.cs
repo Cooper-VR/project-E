@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
 	public Transform Muzzle;
 	public GameObject Bullet;
 	public GameObject particleEffects;
+	public Animator player;
 
 	public bool shooting;
 
@@ -48,8 +49,9 @@ public class Gun : MonoBehaviour
 	public void StartReload()
 	{
 		if (!gunData.reloading && this.gameObject.activeSelf)
-			StartCoroutine(Reload());
-		
+		{
+			StartCoroutine(Reload());player.SetBool("reload", false);
+		}
 	}
 
 	private IEnumerator Reload()
@@ -61,7 +63,9 @@ public class Gun : MonoBehaviour
 		gunData.currentAmmo = gunData.magSize;
 
 		gunData.reloading = false;
-	}
+
+
+    }
 
 	private bool CanShoot() => !gunData.reloading && timeSinceLastShot > 1f / (gunData.fireRate / 60f);
 
@@ -106,7 +110,8 @@ public class Gun : MonoBehaviour
 
 	private void Update()
 	{
-		timeSinceLastShot += Time.deltaTime;
+		player.SetBool("reload", gunData.reloading);
+        timeSinceLastShot += Time.deltaTime;
 
 		Debug.DrawRay(cam.position, cam.forward * 5);
 

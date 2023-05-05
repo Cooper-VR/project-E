@@ -35,7 +35,6 @@ public class playerAnimation : MonoBehaviour
 		}
 		else if (Input.GetKey(movement[0]))
 		{
-			Debug.Log(forward);
 			forward = 1;
 		} 
 		else if (Input.GetKey(movement[1]))
