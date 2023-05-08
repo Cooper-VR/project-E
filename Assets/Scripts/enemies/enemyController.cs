@@ -153,9 +153,6 @@ public class enemyController: MonoBehaviour
             MeshRenderer mesh = gameObject.GetComponent<MeshRenderer>();
 			CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
 			
-
-
-
 			mesh.enabled = false;
 			collider.enabled = false;
 
