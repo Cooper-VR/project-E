@@ -38,5 +38,8 @@ public class GunControl : MonoBehaviour
 	private void moveGun(int value)
 	{
 		playerAnimator.SetInteger("gunPosition", value);
+		Debug.Log(gunData.name);
+		playerAnimator.SetBool("canADS", gunData.canADS);
+
     }
 }

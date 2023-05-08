@@ -25,14 +25,19 @@ public class weaponSwitch : MonoBehaviour
 		SetWeapon();
 		Select(selectedWeapon);
 		timeSinceSwitch = 0;
+		currentWeapon = transform.GetChild(0).gameObject;
     }
 
     private void Update()
     {
-		currentWeapon = transform.GetChild(0).gameObject;
-		gunData = currentWeapon.GetComponent<Gun>().gunData;
-		Gun gunScripts = currentWeapon.gameObject.GetComponent<Gun>();
+		Gun gunScripts = new Gun();
+		if (!currentWeapon.gameObject.TryGetComponent<Gun>(out gunScripts))
+		{
+			gunScripts = currentWeapon.transform.GetChild(0).GetComponent<Gun>();
+			gunData = currentWeapon.transform.GetChild(0).gameObject.GetComponent<Gun>().gunData;
+		}
 		shooting = gunScripts.shooting;
+		gunData = gunScripts.gunData;
 
 
         int previousSelection = selectedWeapon;
