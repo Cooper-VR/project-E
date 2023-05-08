@@ -1,31 +1,48 @@
 using System;
+using System.Collections;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class AugmentMenu : MonoBehaviour
 {
-    static public Animator anim; 
+    public Animator anim; 
 
-    static public GameObject Menu;
+    public GameObject Menu;
 
-    static public bool MenuOpen;
+    public bool MenuOpen;
 
-    static public void OpenMenu()
+
+    private void Start()
     {
-        anim.SetBool("OpenMenu", true);
+        MenuOpen = false;
     }
 
-    static public void CloseMenu()
+    IEnumerator DisableDelay()
+    { 
+        yield return new WaitForSeconds(0.2f);
+        MenuOpen = true;
+
+    }
+
+    public void OpenMenu()
     {
-        anim.SetBool("OpenMenu", false);
+        StartCoroutine(DisableDelay());
+        anim.SetBool("Menu", true);
+    }
+
+    public void CloseMenu()
+    {
+        MenuOpen = false;
+        anim.SetBool("Menu", false);
     }
 
     private void Update()
     {
-        if (Menu.activeSelf)
+        if (MenuOpen)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha7))
-            { 
+            if (Input.GetKeyUp(KeyCode.Alpha7))
+            {
+                Debug.Log("pressed");
                 CloseMenu();
             }
         }

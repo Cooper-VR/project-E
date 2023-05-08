@@ -8,13 +8,17 @@ public class GameManger : MonoBehaviour
 {
     public GameObject Alert;
     bool AlertAugment;
+    bool cooldown;
+    public AugmentMenu AugmentMenu;
 
     void Start()
     {
        AlertAugment = false;
+        cooldown = false;
        AugmentManager.StartCount();
        Debug.Log(AugmentManager.AugmentsInReserve);
     }
+
     void Update()
     {
         if (AugmentManager.AugmentsInReserve >= 1)
@@ -28,7 +32,7 @@ public class GameManger : MonoBehaviour
             {
                 AlertAugment = false;
             }
-            if (Alert.activeSelf && )
+            if (Alert.activeSelf && !AugmentMenu.MenuOpen && !cooldown)
             {
                 if (Input.GetKeyDown(KeyCode.Alpha7))
                 {
