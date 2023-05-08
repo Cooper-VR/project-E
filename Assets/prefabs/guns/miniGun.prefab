@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5085980867056285356}
   m_Layer: 0
-  m_Name: MAG
+  m_Name: Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6198507376060953509}
   m_Layer: 0
-  m_Name: Trigger
+  m_Name: trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1405443918380329122}
   m_Layer: 0
-  m_Name: Muzzle
+  m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -330,26 +330,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8800576092163798224, guid: 1175c7f26b829f84693b28aab05cc155, type: 3}
   m_PrefabInstance: {fileID: 5177269526910748956}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5177269526006440713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4465519555075096012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be1a7d378b4b9924781580b839287e02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: 8eb869b35eb8739489ca7639c4f1e2f6, type: 2}
-  cam: {fileID: 0}
-  Muzzle: {fileID: 4465519555164982113}
-  Bullet: {fileID: 7622915428474892921, guid: bfe793e47973603409b9c5972158ce85, type: 3}
-  particleEffects: {fileID: 4465519555544633988}
-  player: {fileID: 0}
-  shooting: 0
-  particles: []
 --- !u!895512359 &2646369799438198495
 AimConstraint:
   m_ObjectHideFlags: 0
@@ -374,6 +354,26 @@ AimConstraint:
   m_Sources:
   - sourceTransform: {fileID: 7890726300159275707}
     weight: 1
+--- !u!114 &5177269526006440713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4465519555075096012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1a7d378b4b9924781580b839287e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: 8eb869b35eb8739489ca7639c4f1e2f6, type: 2}
+  cam: {fileID: 0}
+  Muzzle: {fileID: 4465519555164982113}
+  Bullet: {fileID: 7622915428474892921, guid: bfe793e47973603409b9c5972158ce85, type: 3}
+  particleEffects: {fileID: 4465519555544633988}
+  player: {fileID: 0}
+  shooting: 0
+  particles: []
 --- !u!4 &4465519555075096013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8800576092163798225, guid: 1175c7f26b829f84693b28aab05cc155, type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Animations.Rigging;
@@ -8,14 +9,18 @@ public class GunControl : MonoBehaviour
 {
 	public Animator playerAnimator;
 
-	public bool shooting;
+    private bool shooting;
 	public GameObject gunSwitcher;
 	public Animator movementAnimation;
 	public KeyCode ADScode;
 	private GunData gunData;
-	public float height;
 
-	private void Update()
+	public PositionConstraint triggerContraint;
+	public PositionConstraint muzzleContraint;
+	public List<ConstraintSource> triggerSources = new List<ConstraintSource>();
+    public List<ConstraintSource> muzzleSources = new List<ConstraintSource>();
+
+    private void Update()
 	{
 		gunData = gunSwitcher.GetComponent<weaponSwitch>().gunData;
 		shooting = gunSwitcher.GetComponent<weaponSwitch>().shooting;
@@ -38,8 +43,17 @@ public class GunControl : MonoBehaviour
 	private void moveGun(int value)
 	{
 		playerAnimator.SetInteger("gunPosition", value);
-		Debug.Log(gunData.name);
 		playerAnimator.SetBool("canADS", gunData.canADS);
+    }
 
+	private void handContraints()
+	{
+		triggerContraint.SetSources(triggerSources);
+		muzzleContraint.SetSources(muzzleSources);
+	}
+	private void getSources()
+	{
+		GameObject currentWeapon = gunSwitcher.GetComponent<weaponSwitch>().currentWeapon;
+        GameObject sourcesParent = currentWeapon.transform.GetChild(0).gameObject;
     }
 }
