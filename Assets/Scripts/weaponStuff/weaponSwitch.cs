@@ -19,6 +19,9 @@ public class weaponSwitch : MonoBehaviour
 	public bool shooting;
 	public GameObject currentWeapon;
 	public GunData gunData;
+	public Gun gunScripts;
+
+    public GunControl SetSources;
 
     private void Start()
     {
@@ -30,7 +33,6 @@ public class weaponSwitch : MonoBehaviour
 
     private void Update()
     {
-		Gun gunScripts = new Gun();
 		if (!currentWeapon.gameObject.TryGetComponent<Gun>(out gunScripts))
 		{
 			gunScripts = currentWeapon.transform.GetChild(0).GetComponent<Gun>();
@@ -53,7 +55,9 @@ public class weaponSwitch : MonoBehaviour
 		if (previousSelection != selectedWeapon)
 		{
 			Select(selectedWeapon);
-		}
+			SetSources.SetSources();
+
+        }
 
 		timeSinceSwitch += Time.deltaTime;
     }
