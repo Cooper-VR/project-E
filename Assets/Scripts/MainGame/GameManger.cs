@@ -10,13 +10,15 @@ public class GameManger : MonoBehaviour
     bool AlertAugment;
     bool cooldown;
     public AugmentMenu AugmentMenu;
+    [SerializeField] private ScriptableObject[] AllAugments;
 
     void Start()
     {
-       AlertAugment = false;
+        AugmentManager.AllAugments = AllAugments;
+        AlertAugment = false;
         cooldown = false;
-       AugmentManager.StartCount();
-       Debug.Log(AugmentManager.AugmentsInReserve);
+        AugmentManager.StartCount();
+        Debug.Log(AugmentManager.AugmentsInReserve);
     }
 
     void Update()

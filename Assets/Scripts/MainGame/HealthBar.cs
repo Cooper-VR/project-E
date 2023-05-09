@@ -36,7 +36,6 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Stats.health);
-        SetHealth(Stats.health);
+        SetHealth(playerStats.health);
     }
 }

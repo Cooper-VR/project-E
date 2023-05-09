@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class playerStats : MonoBehaviour
 {
-    public int health;
+    public static int health;
     public int level;
     private float totalTime;
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class playerStats : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f);  
             health -= 1;
             if (health < 0)
             {
