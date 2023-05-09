@@ -5,21 +5,12 @@ using UnityEngine;
 
 public class MoverCamera : MonoBehaviour
 {
-    [SerializeField] Transform cameraPosition = null;
-    [SerializeField] FirstPersonController controller;
-    public float offset;
-
-    float difference;
-
     public Transform head;
-
-    private void Start()
-    {
-        difference = head.transform.position.y - cameraPosition.position.y;
-    }
-
+    public Vector3 offset;
     void Update()
     {
-        transform.position = new Vector3(cameraPosition.position.x, cameraPosition.position.y + difference, cameraPosition.position.z);
+
+
+        transform.position = head.transform.position + offset;
     }
 }

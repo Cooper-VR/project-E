@@ -33,26 +33,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Sources.Array.data[0].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1
-    classID: 1818360608
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Sources.Array.data[1].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1
+    path: Camera holder/Camera/Weapon Holder/weapon1
     classID: 1818360608
     script: {fileID: 0}
   - curve:
@@ -71,26 +52,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Sources.Array.data[2].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1
-    classID: 1818360608
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Sources.Array.data[0].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1/target
+    path: Camera holder/Camera/Weapon Holder/weapon1
     classID: 1818360608
     script: {fileID: 0}
   - curve:
@@ -109,64 +71,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Sources.Array.data[1].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1/target
-    classID: 1818360608
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Sources.Array.data[2].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1/target
-    classID: 1818360608
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Sources.Array.data[0].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon2
-    classID: 1818360608
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Sources.Array.data[1].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon2
+    path: Camera holder/Camera/Weapon Holder/weapon1
     classID: 1818360608
     script: {fileID: 0}
   - curve:
@@ -185,7 +90,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Sources.Array.data[3].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon2
+    path: Camera holder/Camera/Weapon Holder/weapon1
     classID: 1818360608
     script: {fileID: 0}
   - curve:
@@ -203,8 +108,27 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Sources.Array.data[3].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1
+    attribute: m_Sources.Array.data[0].weight
+    path: Camera holder/Camera/Weapon Holder/weapon2
+    classID: 1818360608
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Sources.Array.data[1].weight
+    path: Camera holder/Camera/Weapon Holder/weapon2
     classID: 1818360608
     script: {fileID: 0}
   - curve:
@@ -223,7 +147,83 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Sources.Array.data[2].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon2
+    path: Camera holder/Camera/Weapon Holder/weapon2
+    classID: 1818360608
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Sources.Array.data[3].weight
+    path: Camera holder/Camera/Weapon Holder/weapon2
+    classID: 1818360608
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Sources.Array.data[0].weight
+    path: Camera holder/Camera/Weapon Holder/weapon1/target
+    classID: 1818360608
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Sources.Array.data[1].weight
+    path: Camera holder/Camera/Weapon Holder/weapon1/target
+    classID: 1818360608
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Sources.Array.data[2].weight
+    path: Camera holder/Camera/Weapon Holder/weapon1/target
     classID: 1818360608
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -235,77 +235,77 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2071499134
+      path: 3886170726
       attribute: 12
       script: {fileID: 0}
       typeID: 1818360608
       customType: 31
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2071499134
-      attribute: 28
-      script: {fileID: 0}
-      typeID: 1818360608
-      customType: 31
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 2071499134
+      path: 3886170726
       attribute: 44
       script: {fileID: 0}
       typeID: 1818360608
       customType: 31
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1288043095
-      attribute: 12
-      script: {fileID: 0}
-      typeID: 1818360608
-      customType: 31
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 1288043095
+      path: 3886170726
       attribute: 28
       script: {fileID: 0}
       typeID: 1818360608
       customType: 31
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1288043095
+      path: 3886170726
+      attribute: 60
+      script: {fileID: 0}
+      typeID: 1818360608
+      customType: 31
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2125140956
+      attribute: 12
+      script: {fileID: 0}
+      typeID: 1818360608
+      customType: 31
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2125140956
+      attribute: 28
+      script: {fileID: 0}
+      typeID: 1818360608
+      customType: 31
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2125140956
       attribute: 44
       script: {fileID: 0}
       typeID: 1818360608
       customType: 31
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3799105732
+      path: 2125140956
+      attribute: 60
+      script: {fileID: 0}
+      typeID: 1818360608
+      customType: 31
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3096280987
       attribute: 12
       script: {fileID: 0}
       typeID: 1818360608
       customType: 31
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3799105732
+      path: 3096280987
       attribute: 28
       script: {fileID: 0}
       typeID: 1818360608
       customType: 31
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3799105732
-      attribute: 60
-      script: {fileID: 0}
-      typeID: 1818360608
-      customType: 31
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 2071499134
-      attribute: 60
-      script: {fileID: 0}
-      typeID: 1818360608
-      customType: 31
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 3799105732
+      path: 3096280987
       attribute: 44
       script: {fileID: 0}
       typeID: 1818360608
@@ -349,26 +349,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Sources.Array.data[0].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1
-    classID: 1818360608
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Sources.Array.data[1].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1
+    path: Camera holder/Camera/Weapon Holder/weapon1
     classID: 1818360608
     script: {fileID: 0}
   - curve:
@@ -387,26 +368,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Sources.Array.data[2].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1
-    classID: 1818360608
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Sources.Array.data[0].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1/target
+    path: Camera holder/Camera/Weapon Holder/weapon1
     classID: 1818360608
     script: {fileID: 0}
   - curve:
@@ -425,64 +387,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Sources.Array.data[1].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1/target
-    classID: 1818360608
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Sources.Array.data[2].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1/target
-    classID: 1818360608
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Sources.Array.data[0].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon2
-    classID: 1818360608
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Sources.Array.data[1].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon2
+    path: Camera holder/Camera/Weapon Holder/weapon1
     classID: 1818360608
     script: {fileID: 0}
   - curve:
@@ -501,7 +406,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Sources.Array.data[3].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon2
+    path: Camera holder/Camera/Weapon Holder/weapon1
     classID: 1818360608
     script: {fileID: 0}
   - curve:
@@ -519,8 +424,27 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Sources.Array.data[3].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon1
+    attribute: m_Sources.Array.data[0].weight
+    path: Camera holder/Camera/Weapon Holder/weapon2
+    classID: 1818360608
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Sources.Array.data[1].weight
+    path: Camera holder/Camera/Weapon Holder/weapon2
     classID: 1818360608
     script: {fileID: 0}
   - curve:
@@ -539,7 +463,83 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Sources.Array.data[2].weight
-    path: Camera Holder/Main Camera/Weapon Holder/weapon2
+    path: Camera holder/Camera/Weapon Holder/weapon2
+    classID: 1818360608
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Sources.Array.data[3].weight
+    path: Camera holder/Camera/Weapon Holder/weapon2
+    classID: 1818360608
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Sources.Array.data[0].weight
+    path: Camera holder/Camera/Weapon Holder/weapon1/target
+    classID: 1818360608
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Sources.Array.data[1].weight
+    path: Camera holder/Camera/Weapon Holder/weapon1/target
+    classID: 1818360608
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Sources.Array.data[2].weight
+    path: Camera holder/Camera/Weapon Holder/weapon1/target
     classID: 1818360608
     script: {fileID: 0}
   m_EulerEditorCurves: []

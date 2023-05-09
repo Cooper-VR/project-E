@@ -24,13 +24,11 @@ public class GunControl : MonoBehaviour
 
 	private List<ConstraintSource> muzzleSouces = new List<ConstraintSource>();
 
-	private string[] contraintNames = new string[3];
+	private string[] contraintNames = { "muzzle", "trigger", "Mag" };
 
     private void Start()
     {
-		contraintNames[0] = "muzzle";
-        contraintNames[1] = "trigger";
-        contraintNames[2] = "Mag";
+		
     }
 
     private void Update()
@@ -77,10 +75,10 @@ public class GunControl : MonoBehaviour
 		{
 			
 			string name = sourcesParent.transform.GetChild(i).name;
-			
 
 			if (name == contraintNames[0])
 			{
+				
 				muzzleSource.sourceTransform = sourcesParent.transform.GetChild(i).GetChild(0);
 			} else if (name == contraintNames[1])
 			{

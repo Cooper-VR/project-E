@@ -163,7 +163,7 @@ public class enemyController: MonoBehaviour
 
 	IEnumerator delay()
 	{
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(2);
 
 		
         Destroy(gameObject);
