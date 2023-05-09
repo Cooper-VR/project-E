@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,6 +28,7 @@ public class enemyController: MonoBehaviour
 	public explosionData explosion;
 
     public GameObject ExlotionsPrefab;
+	public GameObject HealthPickUpPrefab;
 
 	public enum enemyTypesEnum
 	{
@@ -80,8 +82,9 @@ public class enemyController: MonoBehaviour
 
         if (health <= 0)
         {
+            Instantiate(HealthPickUpPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(gameObject);
-			AugmentManager.AddPoints();
+            AugmentManager.AddPoints();
         }
     }
 

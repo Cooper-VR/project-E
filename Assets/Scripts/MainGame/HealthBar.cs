@@ -14,7 +14,6 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(Stats.health);
         slider.maxValue = 150;
     }
 
@@ -37,6 +36,7 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(Stats.health);
         SetHealth(Stats.health);
     }
 }

@@ -3,7 +3,13 @@ guid: 1113ef46f6710604db45a40ba9fe2052
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemyData: {instanceID: 0}
+  - muzzle: {instanceID: 0}
+  - projectile: {instanceID: 0}
+  - explosion: {instanceID: 0}
+  - ExlotionsPrefab: {instanceID: 0}
+  - HealthPickUpPrefab: {fileID: 2939383024649246356, guid: ab7c1cedcca25904d82ab57df7865f20, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
