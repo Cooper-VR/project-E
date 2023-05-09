@@ -5731,7 +5731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &767691880
 Transform:
   m_ObjectHideFlags: 0
@@ -10715,7 +10715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1162075295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10793,7 +10793,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 8f0847e88ff6c474a884592b8e7b88d6, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: fe824860f5a76a34bab39b78453df183, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1178698827
 Transform:
