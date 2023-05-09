@@ -8,6 +8,8 @@ public class KingOfHillTest : MonoBehaviour
     public GameObject Hill;
     private Renderer HillColor;
     public GameObject player;
+    private float visualTime = 180.0f;
+    private float startTime = 0f; 
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class KingOfHillTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Time.time);
     }
 
     private void OnTriggerEnter(Collider Trigger)
@@ -28,17 +31,24 @@ public class KingOfHillTest : MonoBehaviour
         {
             HillColor = Hill.GetComponent<Renderer>();
             HillColor.material.color = Color.red;
+
         }
         else if (Trigger.CompareTag("Player"))
         {
             HillColor = Hill.GetComponent<Renderer>();
             HillColor.material.color = Color.blue;
+
         }
-        else
-        {
-            HillColor = Hill.GetComponent<Renderer>();
-            HillColor.material.color = Color.gray;
-        };
+
+
+    }
+
+    private void OnTriggerExit(Collider Trigger)
+    {
+
+        HillColor = Hill.GetComponent<Renderer>();
+        HillColor.material.color = Color.gray;
+
 
     }
 
