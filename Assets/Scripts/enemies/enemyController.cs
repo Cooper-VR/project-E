@@ -82,6 +82,7 @@ public class enemyController: MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
 	private void zombieSet()
