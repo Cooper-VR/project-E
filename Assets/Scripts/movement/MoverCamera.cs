@@ -15,10 +15,11 @@ public class MoverCamera : MonoBehaviour
 
     private void Start()
     {
+        difference = head.transform.position.y - cameraPosition.position.y;
     }
 
     void Update()
     {
-        transform.position = new Vector3(cameraPosition.position.x, cameraPosition.position.y + 0.9f, cameraPosition.position.z);
+        transform.position = new Vector3(cameraPosition.position.x, cameraPosition.position.y + difference, cameraPosition.position.z);
     }
 }

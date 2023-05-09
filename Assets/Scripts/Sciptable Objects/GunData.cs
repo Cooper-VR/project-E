@@ -23,4 +23,8 @@ public class GunData : ScriptableObject
     public float particleCooldown;
     [HideInInspector] public bool reloading;
 
+    [Header("Placement")]
+    public float hip;
+    public float shootNoADS;
+
 }   

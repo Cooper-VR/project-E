@@ -122,10 +122,11 @@ public class enemyController: MonoBehaviour
             shootProjectile();
         }
     }
-	private async void creeperSet()
+	private void creeperSet()
 	{
+		
 		agent.destination = GameObject.FindGameObjectWithTag("Player").transform.position;
-		if ((transform.position - GameObject.FindGameObjectWithTag("Player").transform.position).magnitude < enemyData.explotionProximity)
+		if ((transform.position - agent.destination).magnitude < enemyData.explotionProximity)
 		{
 			startTimeSet = true;
 		}
@@ -152,9 +153,6 @@ public class enemyController: MonoBehaviour
             MeshRenderer mesh = gameObject.GetComponent<MeshRenderer>();
 			CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
 			
-
-
-
 			mesh.enabled = false;
 			collider.enabled = false;
 

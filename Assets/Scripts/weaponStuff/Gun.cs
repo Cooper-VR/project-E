@@ -13,6 +13,9 @@ public class Gun : MonoBehaviour
 	public Transform Muzzle;
 	public GameObject Bullet;
 	public GameObject particleEffects;
+	public Animator player;
+
+	public bool shooting;
 
 	private UnityEngine.ParticleSystem.MinMaxCurve emmisionAmount;
 
@@ -51,8 +54,9 @@ public class Gun : MonoBehaviour
 	public void StartReload()
 	{
 		if (!gunData.reloading && this.gameObject.activeSelf)
-			StartCoroutine(Reload());
-		
+		{
+			StartCoroutine(Reload());player.SetBool("reload", false);
+		}
 	}
 
 	private IEnumerator Reload()
@@ -64,7 +68,9 @@ public class Gun : MonoBehaviour
 		gunData.currentAmmo = gunData.magSize;
 
 		gunData.reloading = false;
-	}
+
+
+    }
 
 	private bool CanShoot() => !gunData.reloading && timeSinceLastShot > 1f / (gunData.fireRate / 60f);
 
@@ -100,15 +106,17 @@ public class Gun : MonoBehaviour
 
 				particleTime = Time.time;
 				particleCurrentTime = Time.time;
-
+                shooting = true;
                 OnGunShot();
-			}
+			} 
 		}
-	}
+        
+    }
 
 	private void Update()
 	{
-		timeSinceLastShot += Time.deltaTime;
+		player.SetBool("reload", gunData.reloading);
+        timeSinceLastShot += Time.deltaTime;
 
 		Debug.DrawRay(cam.position, cam.forward * 5);
 
@@ -116,7 +124,8 @@ public class Gun : MonoBehaviour
 		{
             Shoot();
 		}
-		if (Input.GetKeyDown(KeyCode.R))
+        else shooting = false;
+        if (Input.GetKeyDown(KeyCode.R))
 		{
 			StartReload();
         }

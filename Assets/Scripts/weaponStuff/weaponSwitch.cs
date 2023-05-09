@@ -16,17 +16,33 @@ public class weaponSwitch : MonoBehaviour
 	private int selectedWeapon;
 	private float timeSinceSwitch;
 
+	public bool shooting;
+	public GameObject currentWeapon;
+	public GunData gunData;
+	public Gun gunScripts;
+
+    public GunControl SetSources;
 
     private void Start()
     {
 		SetWeapon();
 		Select(selectedWeapon);
 		timeSinceSwitch = 0;
+		currentWeapon = transform.GetChild(0).gameObject;
     }
 
     private void Update()
     {
-		int previousSelection = selectedWeapon;
+		if (!currentWeapon.gameObject.TryGetComponent<Gun>(out gunScripts))
+		{
+			gunScripts = currentWeapon.transform.GetChild(0).GetComponent<Gun>();
+			gunData = currentWeapon.transform.GetChild(0).gameObject.GetComponent<Gun>().gunData;
+		}
+		shooting = gunScripts.shooting;
+		gunData = gunScripts.gunData;
+
+
+        int previousSelection = selectedWeapon;
 
 		for (int i = 0; i < Keys.Length; i++)
 		{
@@ -39,7 +55,9 @@ public class weaponSwitch : MonoBehaviour
 		if (previousSelection != selectedWeapon)
 		{
 			Select(selectedWeapon);
-		}
+			SetSources.SetSources();
+
+        }
 
 		timeSinceSwitch += Time.deltaTime;
     }
@@ -51,7 +69,8 @@ public class weaponSwitch : MonoBehaviour
 		for (int i = 0; i < transform.childCount; i++) 
 		{
 			Weapons[i] = transform.GetChild(i);
-		}
+
+        }
 
 		if (Keys == null)
 		{
@@ -64,7 +83,12 @@ public class weaponSwitch : MonoBehaviour
 		for (int i = 0; i < Weapons.Length; i++)
 		{
 			Weapons[i].gameObject.SetActive(i == weaponIndex);
-		}
+			if (i == weaponIndex)
+			{
+                currentWeapon = Weapons[i].gameObject;
+            }
+
+        }
 
 		timeSinceSwitch = 0;
 

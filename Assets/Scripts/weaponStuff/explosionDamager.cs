@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -58,7 +59,6 @@ public class explosionDamager : MonoBehaviour
 			if (allDamagers[i].tag == "Player" || allDamagers[i].tag == "enemy")
 			{
                 Vector3 position = checkPosition();
-
                 float distance = (position - allDamagers[i].transform.position).magnitude;
 
 				if (distance < explosionData.radius)
@@ -67,12 +67,11 @@ public class explosionDamager : MonoBehaviour
 
 					float damage = ((newMax / explosionData.radius) * distance) + explosionData.farthestDamage;
 
-					playerStats player = new playerStats();
-					enemyController enemyData = new enemyController();
-
+					playerStats player;
+					enemyController enemyData;
+                    Debug.Log(distance);
 					if (allDamagers[i].TryGetComponent<playerStats>(out player))
 					{
-						Debug.Log(distance);
 						player.health -= (int)damage;
 					} else if (allDamagers[i].TryGetComponent<enemyController>(out enemyData))
 					{
