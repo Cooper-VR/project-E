@@ -1,37 +1,35 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Animations;
-using UnityEngine.Animations.Rigging;
 
 public class GunControl : MonoBehaviour
 {
-	public Animator playerAnimator;
+	//methods
+    methodClasses methods = new methodClasses();
 
-    private bool shooting;
+	#region public variables
+	public Animator playerAnimator;
 	public GameObject gunSwitcher;
 	public Animator movementAnimation;
 	public KeyCode ADScode;
-	private GunData gunData;
-
 	public ParentConstraint triggerContraint;
 	public ParentConstraint muzzleContraint;
 	public ConstraintSource triggerSource = new ConstraintSource();
     public ConstraintSource muzzleSource = new ConstraintSource();
 	public ConstraintSource muzzleSource2 = new ConstraintSource();
+    #endregion
 
-	private List<ConstraintSource> muzzleSouces = new List<ConstraintSource>();
-
+    #region private variables
+    private bool shooting;
+	private GunData gunData;
+    private List<ConstraintSource> muzzleSouces = new List<ConstraintSource>();
 	private string[] contraintNames = { "muzzle", "trigger", "Mag" };
+	#endregion
 
-    private void Start()
-    {
-		
-    }
-
-    private void Update()
+	/// <summary>
+	/// update function for gun control
+	/// </summary>
+	private void Update()
 	{
 		gunData = gunSwitcher.GetComponent<weaponSwitch>().gunData;
 		shooting = gunSwitcher.GetComponent<weaponSwitch>().shooting;
@@ -39,37 +37,29 @@ public class GunControl : MonoBehaviour
 		
         if (Input.GetKey(ADScode))
 		{
-			moveGun(1);
+            methods.moveGun(1, playerAnimator, gunData);
 		}
         else if (shooting)
         {
-            moveGun(2);
+            methods.moveGun(2, playerAnimator, gunData);
 		} 
 		else
 		{
-			moveGun(0);
+            methods.moveGun(0, playerAnimator, gunData);
 		}
     }
 
-	private void moveGun(int value)
-	{
-		playerAnimator.SetInteger("gunPosition", value);
-		playerAnimator.SetBool("canADS", gunData.canADS);
-    }
-
+	/// <summary>
+	/// will set the parent contraints
+	/// </summary>
 	public void SetSources()
 	{
-		
 		GameObject currentWeapon = gunSwitcher.GetComponent<weaponSwitch>().currentWeapon;
         GameObject sourcesParent = currentWeapon.transform.GetChild(0).gameObject;
-
-		
 
 		int childCount = sourcesParent.transform.childCount;
 
 		muzzleSouces.Clear();
-		
-
 
         for (int i = 0; i < childCount; i++)
 		{

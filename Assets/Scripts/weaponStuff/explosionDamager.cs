@@ -1,18 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class explosionDamager : MonoBehaviour
 {
+    #region public variables
     public Terrain terrainCollider;
     public explosionData explosionData;
 	public ParticleSystem rootParticle;
 	public GameObject[] particles = new GameObject[4];
+    #endregion
 
     private void Start()
     {
@@ -45,70 +40,5 @@ public class explosionDamager : MonoBehaviour
             //change burst count based on multiplier
         }
     }
-
-    public void onExplosions()
-	{
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
-		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-		GameObject[] allDamagers = enemies.Concat(players).ToArray();
-
-
-		for (int i = 0; i < allDamagers.Length; i++)
-		{
-			if (allDamagers[i].tag == "Player" || allDamagers[i].tag == "enemy")
-			{
-                Vector3 position = checkPosition();
-                float distance = (position - allDamagers[i].transform.position).magnitude;
-
-				if (distance < explosionData.radius)
-				{
-					float newMax = explosionData.closestDamage - explosionData.farthestDamage;
-
-					float damage = ((newMax / explosionData.radius) * distance) + explosionData.farthestDamage;
-
-					playerStats player;
-					enemyController enemyData;
-                    Debug.Log(distance);
-					if (allDamagers[i].TryGetComponent<playerStats>(out player))
-					{
-						player.health -= (int)damage;
-					} else if (allDamagers[i].TryGetComponent<enemyController>(out enemyData))
-					{
-                        enemyData.alterHP(damage);
-					}
-				}
-			}
-		}
-        rootParticle.Play();
-    }
-
-    private Vector3 checkPosition()
-    {
-        RaycastHit hit;
-        Vector3 position = transform.position;
-        Ray ray = new Ray(position, Vector3.up);
-
-
-        if (Physics.Raycast(position, Vector3.up, out hit, Mathf.Infinity))
-        {
-            position = hit.point;
-        }
-        else if (Physics.Raycast(position, Vector3.down, out hit, Mathf.Infinity))
-        {
-            position = hit.point;
-        }
-        else
-        {
-            float height = terrainCollider.SampleHeight(position);
-
-            if (height == 0)
-            {
-                return new Vector3(0, -1, 0);
-            }
-            position.y = height;
-        }
-
-        return position;
-    }
+ 
 }

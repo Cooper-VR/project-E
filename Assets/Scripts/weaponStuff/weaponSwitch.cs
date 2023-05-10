@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class weaponSwitch : MonoBehaviour
 {
-	[Header("References")]
+    #region private variables
+    [Header("References")]
 	[SerializeField] private Transform[] Weapons;
 
 	[Header("Keys")]
@@ -12,16 +13,21 @@ public class weaponSwitch : MonoBehaviour
 
 	[Header("Settings")]
 	[SerializeField] private float switchtime;
-
 	private int selectedWeapon;
 	private float timeSinceSwitch;
 
-	public bool shooting;
+    #endregion
+
+    #region public variables
+    public bool shooting;
 	public GameObject currentWeapon;
 	public GunData gunData;
 	public Gun gunScripts;
-
     public GunControl SetSources;
+
+    #endregion
+
+    #region start/update
 
     private void Start()
     {
@@ -62,6 +68,9 @@ public class weaponSwitch : MonoBehaviour
 		timeSinceSwitch += Time.deltaTime;
     }
 
+    #endregion
+
+    #region methods
     private void SetWeapon()
 	{
 		Weapons = new Transform[transform.childCount];
@@ -99,4 +108,5 @@ public class weaponSwitch : MonoBehaviour
 	{
 		
 	}
+    #endregion
 }

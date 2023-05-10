@@ -6,25 +6,28 @@ using UnityEngine.EventSystems;
 
 public class Gun : MonoBehaviour
 {
-
-	[Header("References")]
-	[SerializeField] public GunData gunData;
-	[SerializeField] private Transform cam;
+    #region public variables
+    [Header("References")]
+	public GunData gunData;
 	public Transform Muzzle;
 	public GameObject Bullet;
 	public GameObject particleEffects;
 	public Animator player;
-
 	public bool shooting;
-
-	private UnityEngine.ParticleSystem.MinMaxCurve emmisionAmount;
-
 	public ParticleSystem[] particles;
 
-    float timeSinceLastShot;
-    float particleTime = 0f;
-	float particleCurrentTime = 0f;
+    #endregion
 
+    #region private variables
+    private float timeSinceLastShot;
+	[SerializeField] private Transform cam;
+	private UnityEngine.ParticleSystem.MinMaxCurve emmisionAmount;
+    private float particleTime = 0f;
+    private float particleCurrentTime = 0f;
+
+    #endregion
+
+    #region start/update
     private void Start()
 	{
 		cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
@@ -44,7 +47,40 @@ public class Gun : MonoBehaviour
         }
     }
 
-	private void OnDisable()
+    private void Update()
+    {
+        player.SetBool("reload", gunData.reloading);
+        timeSinceLastShot += Time.deltaTime;
+
+        Debug.DrawRay(cam.position, cam.forward * 5);
+
+        if (Input.GetMouseButton(0))
+        {
+            Shoot();
+        }
+        else shooting = false;
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StartReload();
+        }
+
+        particleCurrentTime = Time.time;
+
+        if (particleCurrentTime - particleTime > gunData.particleCooldown)
+        {
+            for (int i = 0; i < particles.Length; i++)
+            {
+                var yourParticleEmission = particles[i].emission;
+
+                yourParticleEmission.enabled = true;
+                yourParticleEmission.rateOverTime = 0f;
+            }
+        }
+    }
+    #endregion
+
+    #region helpers
+    private void OnDisable()
 	{
 		gunData.reloading = false;
 		PlayerShoot.shootInput -= Shoot;
@@ -113,36 +149,7 @@ public class Gun : MonoBehaviour
         
     }
 
-	private void Update()
-	{
-		player.SetBool("reload", gunData.reloading);
-        timeSinceLastShot += Time.deltaTime;
-
-		Debug.DrawRay(cam.position, cam.forward * 5);
-
-		if (Input.GetMouseButton(0))
-		{
-            Shoot();
-		}
-        else shooting = false;
-        if (Input.GetKeyDown(KeyCode.R))
-		{
-			StartReload();
-        }
-
-		particleCurrentTime = Time.time;
-
-		if (particleCurrentTime - particleTime > gunData.particleCooldown)
-		{
-            for (int i = 0; i < particles.Length; i++)
-            {
-                var yourParticleEmission = particles[i].emission;
-
-                yourParticleEmission.enabled = true;
-                yourParticleEmission.rateOverTime = 0f;
-            }
-        }
-    }
+	
 
 	private void OnDestroy()
 	{
@@ -151,4 +158,5 @@ public class Gun : MonoBehaviour
 	}
 
     private void OnGunShot() { }
+    #endregion
 }
