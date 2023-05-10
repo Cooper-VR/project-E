@@ -1,3 +1,4 @@
+using Fragsurf.Movement;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,20 +6,35 @@ using UnityEngine;
 
 public class playerAnimation : MonoBehaviour
 {
-	public KeyCode[] movement = new KeyCode[4];
+	//methods
+	methodClasses methods = new methodClasses();
+
+    #region public variables
+    public KeyCode[] movement = new KeyCode[4];
 	public Animator animator;
 	public float transitionMultiplier;
 	public Transform playerBody;
+	public LayerMask groundLayer;
+    #endregion
 
-	private int forward;
+    #region private variables
+    private int forward;
 	private int sideways;
 	private Vector3 playerTransform;
     private float YTime = 0;
     private float XTime = 0;
+	private float previous;
+	private float Yvelocity;
+	private SurfCharacter moveData;
 
+    #endregion
+
+    #region start/update
     private void Start()
 	{
-		playerTransform = playerBody.transform.localPosition;
+        moveData = GetComponent<SurfCharacter>();
+
+        playerTransform = playerBody.transform.localPosition;
 		movement[0] = KeyCode.W;
 		movement[1] = KeyCode.S;
 		movement[2] = KeyCode.D;
@@ -27,6 +43,28 @@ public class playerAnimation : MonoBehaviour
 
 	private void Update()
 	{
+		Vector3 ground = methods.checkPosition(transform.position.x, transform.position.z, GameObject.FindGameObjectWithTag("terrain").GetComponent<Terrain>(), groundLayer);
+        Yvelocity = ((transform.position.y - previous)) / Time.deltaTime;
+        previous = transform.position.y;
+
+		if (Yvelocity > 0 && transform.position.y - ground.y > 1.2f)
+		{
+			animator.SetBool("jump", true);
+		}
+		else
+		{
+			animator.SetBool("jump", false);
+		}
+
+        if (moveData.moveData.crouching)
+		{
+			animator.SetBool("crouching", true);
+		}
+		else
+		{
+			animator.SetBool("crouching", false);
+        }
+
 		playerBody.transform.localPosition = playerTransform;
 
 		if (Input.GetKey(movement[0]) && Input.GetKeyDown(movement[1]))
@@ -77,4 +115,5 @@ public class playerAnimation : MonoBehaviour
         animator.SetFloat("sideWays", XTime);
         animator.SetFloat("forward", YTime);
     }
+    #endregion
 }
