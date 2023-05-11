@@ -82,10 +82,7 @@ public class enemyController: MonoBehaviour
 
         if (health <= 0)
         {
-			if (Random.Range(1, 3) == 2)
-			{
-				Instantiate(HealthPickUpPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-			}
+            Instantiate(HealthPickUpPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(gameObject);
             AugmentManager.AddPoints();
         }

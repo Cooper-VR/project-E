@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AugmentMenu : MonoBehaviour
 {
@@ -12,14 +10,6 @@ public class AugmentMenu : MonoBehaviour
     public GameObject Menu;
 
     public bool MenuOpen;
-
-    public GameObject Slot1;
-
-    public GameObject Slot2;
-
-    public GameObject Slot3;
-
-    public int CurrentSelectedOption;
 
 
     private void Start()
@@ -36,9 +26,6 @@ public class AugmentMenu : MonoBehaviour
 
     public void OpenMenu()
     {
-        Image image1 = Slot1.GetComponentInChildren<Image>();
-        Text text1 = Slot1.GetComponentInChildren<Text>();
-        //image1.sprite = AugmentManager.Augments[0][0].Icon;
         StartCoroutine(DisableDelay());
         anim.SetBool("Menu", true);
     }
@@ -58,7 +45,6 @@ public class AugmentMenu : MonoBehaviour
                 Debug.Log("pressed");
                 CloseMenu();
             }
-            
         }
     }
 }
