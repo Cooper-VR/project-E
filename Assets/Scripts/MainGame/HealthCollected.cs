@@ -15,7 +15,6 @@ public class HealthCollected : MonoBehaviour
 
     private void Detroyed()
     {
-        Debug.Log(playerStats.health);
         Destroy(gameObject);
         deathParticles = gameObject.GetComponent<ParticleSystem>();
         deathParticles.Play();

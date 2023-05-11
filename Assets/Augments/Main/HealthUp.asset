@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfc9cf32ad095b42b20016b6d9d026b, type: 3}
   m_Name: HealthUp
   m_EditorClassIdentifier: 
-  id: 2
-  augmentName: Health Up
-  value: 2
+  Id: 2
+  AugmentName: Health Up
+  Value: 0
   Icon: {fileID: 21300000, guid: 752015711adb96641b7f03d4b26d5825, type: 3}

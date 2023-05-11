@@ -10,7 +10,7 @@ public class GameManger : MonoBehaviour
     bool AlertAugment;
     bool cooldown;
     public AugmentMenu AugmentMenu;
-    [SerializeField] private ScriptableObject[] AllAugments;
+    [SerializeField] private Item[] AllAugments;
 
     void Start()
     {

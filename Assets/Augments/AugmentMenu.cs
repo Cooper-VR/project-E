@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AugmentMenu : MonoBehaviour
 {
@@ -13,13 +14,11 @@ public class AugmentMenu : MonoBehaviour
 
     public bool MenuOpen;
 
-    public GameObject Slot1;
+    public Image[] Images;
 
-    public GameObject Slot2;
+    public TMP_Text[] Text;
 
-    public GameObject Slot3;
-
-    public int CurrentSelectedOption;
+   // public int CurrentSelectedOption;
 
 
     private void Start()
@@ -31,14 +30,22 @@ public class AugmentMenu : MonoBehaviour
     { 
         yield return new WaitForSeconds(0.2f);
         MenuOpen = true;
-
     }
 
     public void OpenMenu()
     {
-        Image image1 = Slot1.GetComponentInChildren<Image>();
-        Text text1 = Slot1.GetComponentInChildren<Text>();
-        //image1.sprite = AugmentManager.Augments[0][0].Icon;
+        string str = AugmentManager.AugmentsInInventory[AugmentManager.AugmentsInInventory.Count - 1][0].AugmentName;
+
+        Debug.Log(str);
+
+        Images[0].sprite = AugmentManager.AugmentsInInventory[AugmentManager.AugmentsInInventory.Count - 1][0].Icon;
+        Images[1].sprite = AugmentManager.AugmentsInInventory[AugmentManager.AugmentsInInventory.Count - 1][1].Icon;
+        Images[2].sprite = AugmentManager.AugmentsInInventory[AugmentManager.AugmentsInInventory.Count - 1][2].Icon;
+
+        Text[0].text = AugmentManager.AugmentsInInventory[AugmentManager.AugmentsInInventory.Count - 1][1].AugmentName;
+        Text[1].text = AugmentManager.AugmentsInInventory[AugmentManager.AugmentsInInventory.Count - 1][1].AugmentName;
+        Text[2].text = AugmentManager.AugmentsInInventory[AugmentManager.AugmentsInInventory.Count - 1][1].AugmentName;
+
         StartCoroutine(DisableDelay());
         anim.SetBool("Menu", true);
     }
