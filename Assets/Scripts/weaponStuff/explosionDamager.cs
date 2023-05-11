@@ -73,7 +73,7 @@ public class explosionDamager : MonoBehaviour
 					if (allDamagers[i].TryGetComponent<playerStats>(out player))
 					{
 						Debug.Log(distance);
-						player.health -= (int)damage;
+                        playerStats.health -= (int)damage;
 					} else if (allDamagers[i].TryGetComponent<enemyController>(out enemyData))
 					{
                         enemyData.alterHP(damage);

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class HealthCollected : MonoBehaviour
 {
-    [SerializeField] playerStats stats;
-    [SerializeField] ParticleSystem deathParticles;
+    ParticleSystem deathParticles;
 
     IEnumerator DespawnTimer()
     {
@@ -16,8 +15,9 @@ public class HealthCollected : MonoBehaviour
 
     private void Detroyed()
     {
-        Debug.Log(stats.health);
+        Debug.Log(playerStats.health);
         Destroy(gameObject);
+        deathParticles = gameObject.GetComponent<ParticleSystem>();
         deathParticles.Play();
     }
 
@@ -31,14 +31,13 @@ public class HealthCollected : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            Debug.Log(stats.health);
-            if ((stats.health + 45) > 150)
+            if ((playerStats.health + 25) > 150)
             {
-                stats.health = 150;
+                playerStats.health = 150;
             }
             else
             {
-                stats.health += 45;  
+                playerStats.health += 25;  
             }
             Detroyed();
         }
