@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea802cb30a0c60847921586457dfb961, type: 3}
   m_Name: creeper
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
-  EnemiesPerMin: 0
-  totalEnemies: 0
-  radius: 0
+  enemyPrefab: {fileID: 5240704633488086776, guid: 450149a7197b2324682ba9c0e21a06ef, type: 3}
+  EnemiesPerMin: 50
+  totalEnemies: 500
+  radius: 10
