@@ -10,7 +10,7 @@ public static class AugmentManager
     public static int AugmentsInReserve;
     public static Item[] AllAugments;
     public static Item[] SelectedAugments;
-    public static List<Item[]> Augments = new List<Item[]>();
+    public static List<Item> Augments = new List<Item>();
     public static List<Item[]> AugmentsInInventory = new List<Item[]>();
 
     static int index;

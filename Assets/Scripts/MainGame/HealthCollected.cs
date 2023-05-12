@@ -5,24 +5,36 @@ using UnityEngine;
 public class HealthCollected : MonoBehaviour
 {
     ParticleSystem deathParticles;
+    MeshRenderer renderer;
+    BoxCollider colider;
 
     IEnumerator DespawnTimer()
     {
         yield return new WaitForSeconds(5);
-        Detroyed();
+        Destroy(gameObject);
+    }
+
+    IEnumerator ParticleTimer()
+    {
+        yield return new WaitForSeconds(1.3f);
+        Destroy(gameObject);
     }
 
 
     private void Detroyed()
     {
-        Destroy(gameObject);
-        deathParticles = gameObject.GetComponent<ParticleSystem>();
         deathParticles.Play();
+        colider.enabled = false;
+        renderer.enabled = false;
+        StartCoroutine(ParticleTimer());
     }
 
 
     private void Start()
     {
+        deathParticles = gameObject.GetComponent<ParticleSystem>();
+        renderer = gameObject.GetComponent<MeshRenderer>();
+        colider = gameObject.GetComponent<BoxCollider>();
         StartCoroutine(DespawnTimer());
     }
 

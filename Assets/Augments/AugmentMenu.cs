@@ -5,6 +5,8 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.IMGUI.Controls;
+using UnityEngine.Analytics;
 
 public class AugmentMenu : MonoBehaviour
 {
@@ -14,16 +16,28 @@ public class AugmentMenu : MonoBehaviour
 
     public bool MenuOpen;
 
+    public GameObject selector;
+
     public Image[] Images;
 
     public TMP_Text[] Text;
 
-   // public int CurrentSelectedOption;
+    enum Options 
+    {
+        one, 
+        two,
+        three
+    }
+
+    Options SelectedOption = Options.one;
+
+    // public int CurrentSelectedOption;
 
 
     private void Start()
     {
         MenuOpen = false;
+        selector.transform.position = Images[0].transform.position;
     }
 
     IEnumerator DisableDelay()
@@ -34,6 +48,8 @@ public class AugmentMenu : MonoBehaviour
 
     public void OpenMenu()
     {
+        SelectedOption = Options.one;
+
         string str = AugmentManager.AugmentsInInventory[AugmentManager.AugmentsInInventory.Count - 1][0].AugmentName;
 
         Debug.Log(str);
@@ -65,7 +81,37 @@ public class AugmentMenu : MonoBehaviour
                 Debug.Log("pressed");
                 CloseMenu();
             }
-            
+            if (Input.GetMouseButtonDown(0))
+            {
+                AugmentManager.Augments.Add(AugmentManager.AugmentsInInventory[AugmentManager.AugmentsInInventory.Count - 1][(int)SelectedOption]);
+                AugmentManager.AugmentsInInventory.Remove(AugmentManager.AugmentsInInventory[AugmentManager.AugmentsInInventory.Count - 1]);
+                Debug.Log("Clicked");
+                Debug.Log(AugmentManager.Augments[0]);
+                CloseMenu();
+
+            }
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                Debug.Log(Input.mouseScrollDelta.y);
+                switch (SelectedOption)
+                {
+                    case Options.one: SelectedOption = Options.two; selector.transform.position = Images[1].transform.position; break;
+                    case Options.two: SelectedOption = Options.three; selector.transform.position = Images[2].transform.position; break;
+                    case Options.three: SelectedOption = Options.one; selector.transform.position = Images[0].transform.position; break;
+                    default: SelectedOption = Options.one; break;
+                }
+            }
+            else if (Input.mouseScrollDelta.y < 0)
+            {
+                Debug.Log(Input.mouseScrollDelta.y);
+                switch (SelectedOption)
+                {
+                    case Options.one: SelectedOption = Options.three; selector.transform.position = Images[2].transform.position; break;
+                    case Options.two: SelectedOption = Options.one; selector.transform.position = Images[0].transform.position; break;
+                    case Options.three: SelectedOption = Options.two; selector.transform.position = Images[1].transform.position; break;
+                    default: SelectedOption = Options.one; break;
+                }
+            }
         }
     }
 }
