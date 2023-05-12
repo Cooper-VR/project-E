@@ -143,11 +143,20 @@ public class playerAnimation : MonoBehaviour
 
 	private void getVelocity()
 	{
-		ground = methods.checkPosition(transform.position.x, transform.position.z, GameObject.FindGameObjectWithTag("terrain").GetComponent<Terrain>(), groundLayer);
+		GameObject groundOBJ = GameObject.FindGameObjectWithTag("terrain");
+
+		if (groundOBJ != null)
+		{ 
+		ground = methods.checkPosition(transform.position.x, transform.position.z, groundOBJ.GetComponent<Terrain>(), groundLayer);
 		velocity = ((transform.position - previous)) / Time.deltaTime;
 		Velocity2D.x = velocity.x;
 		Velocity2D.y = velocity.z;
 		previous = transform.position;
+
+		}
+
+
+       
 	}
-	#endregion
+    #endregion
 }
