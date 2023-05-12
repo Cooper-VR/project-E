@@ -136,6 +136,11 @@ MonoBehaviour:
   muzzle: {fileID: 2384045492531179659}
   projectile: {fileID: 1372459792764516902, guid: 036f8ea12df28a042bbc6a6e38ed1ff0, type: 3}
   projectileSpeed: 2400
+  startTimeSet: 0
+  childRenders: []
+  explosion: {fileID: 0}
+  ExlotionsPrefab: {fileID: 0}
+  HealthPickUpPrefab: {fileID: 2939383024649246356, guid: ab7c1cedcca25904d82ab57df7865f20, type: 3}
   enemyTypes: 2
 --- !u!195 &5240704633488086782
 NavMeshAgent:

@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: test
   m_EditorClassIdentifier: 
   name: test
-  speed: 10
-  maxHealth: 250
+  speed: 16
+  maxHealth: 25
+  fireRate: 0
   damage: 10
+  explotionRadius: 0
+  explotionProximity: 0
+  explotionDelay: 0

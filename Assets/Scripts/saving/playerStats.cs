@@ -1,17 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class playerStats : MonoBehaviour
 {
-    public int health;
+    public static int health;
     public int level;
     private float totalTime;
     // Start is called before the first frame update
     void Start()
     {
         health = 150;
+        StartCoroutine(HealthDetuction());
+    }
+
+    IEnumerator HealthDetuction()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);  
+            health -= 1;
+            if (health < 0)
+            {
+                health = 0;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -20,7 +35,7 @@ public class playerStats : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("do ui animation for when they die");
-        }
+        }   
     }
 
     private void OnCollisionStay(Collision collision)

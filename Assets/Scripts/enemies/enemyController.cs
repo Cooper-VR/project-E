@@ -1,27 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class enemyController: MonoBehaviour
 {
-	//methods
-	methodClasses methods = new methodClasses();
-
-    #region public variables
-    public float health;
+	public float health;
+	private float maxHealth;
 	public enemies enemyData;
+
 	public Transform muzzle;
 	public GameObject projectile;
 	public float projectileSpeed;
 	public bool startTimeSet = false;
 	public MeshRenderer[] childRenders;
-	public explosionData explosion;
-    public GameObject ExlotionsPrefab;
-    #endregion
 
-    #region private variables
-    private float maxHealth;
 	private NavMeshAgent agent;
     
     private float currentTime = 0;
@@ -30,25 +24,27 @@ public class enemyController: MonoBehaviour
     private float startTime = 0f;
     private float endTime = 0f;
 	private bool exploded = false;
-    #endregion
 
-	/// <summary>
-	/// different enemy types
-	/// </summary>
-    public enum enemyTypesEnum
+	public explosionData explosion;
+
+    public GameObject ExlotionsPrefab;
+	public GameObject HealthPickUpPrefab;
+
+	public enum enemyTypesEnum
 	{
 		running,
 		flying,
 		shooting,
 		creeper
 	};
-
-	//sets a default value
 	public enemyTypesEnum enemyTypes = enemyTypesEnum.running;
 
-    #region start/update
+	public void alterHP(float damage)
+	{
+		health -= damage;
+	}
 
-    private void Start()
+	private void Start()
 	{
 		maxHealth = enemyData.maxHealth;
 		health = maxHealth;
@@ -70,18 +66,32 @@ public class enemyController: MonoBehaviour
 			endTime += Time.deltaTime;
 		}
 
-		enemyTypeCheck();
+		if (enemyTypes == enemyTypesEnum.running)
+		{
+			zombieSet();
+		} else if (enemyTypes == enemyTypesEnum.flying)
+		{
+			flyerSet();
+		} else if (enemyTypes == enemyTypesEnum.shooting)
+		{
+			sooterSet();
+        } else if (enemyTypes == enemyTypesEnum.creeper)
+		{
+			creeperSet();
+		}
 
         if (health <= 0)
         {
+			if (Random.Range(1, 3) == 2)
+			{
+				Instantiate(HealthPickUpPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+			}
             Destroy(gameObject);
+            AugmentManager.AddPoints();
         }
     }
 
-    #endregion
-
-    #region enemy types
-    private void zombieSet()
+	private void zombieSet()
 	{
 		agent.destination = GameObject.FindGameObjectWithTag("Player").transform.position;
 	}
@@ -119,11 +129,10 @@ public class enemyController: MonoBehaviour
             shootProjectile();
         }
     }
-	private void creeperSet()
+	private async void creeperSet()
 	{
-		
 		agent.destination = GameObject.FindGameObjectWithTag("Player").transform.position;
-		if ((transform.position - agent.destination).magnitude < enemyData.explotionProximity)
+		if ((transform.position - GameObject.FindGameObjectWithTag("Player").transform.position).magnitude < enemyData.explotionProximity)
 		{
 			startTimeSet = true;
 		}
@@ -138,7 +147,7 @@ public class enemyController: MonoBehaviour
 				GameObject explotion = GameObject.Instantiate(ExlotionsPrefab, spawnPosition, transform.rotation, gameObject.transform);
 				explosionDamager component = explotion.GetComponent<explosionDamager>();
 				component.explosionData = explosion;
-                methods.onExplosions(component.explosionData, component.rootParticle, transform.position, component.terrainCollider);
+				component.onExplosions();
 				exploded = true;
 			}
 			
@@ -150,6 +159,9 @@ public class enemyController: MonoBehaviour
             MeshRenderer mesh = gameObject.GetComponent<MeshRenderer>();
 			CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
 			
+
+
+
 			mesh.enabled = false;
 			collider.enabled = false;
 
@@ -157,56 +169,15 @@ public class enemyController: MonoBehaviour
         }
 
     }
-    #endregion
 
-    #region helpers
-    /// <summary>
-    /// will subtract from enemy health
-    /// </summary>
-    /// <param name="damage">amount subtracted</param>
-    public void alterHP(float damage)
-    {
-        health -= damage;
-    }
-
-    /// <summary>
-    /// will check the enemy type and set it
-    /// </summary>
-    private void enemyTypeCheck()
-    {
-        if (enemyTypes == enemyTypesEnum.running)
-        {
-            zombieSet();
-        }
-        else if (enemyTypes == enemyTypesEnum.flying)
-        {
-            flyerSet();
-        }
-        else if (enemyTypes == enemyTypesEnum.shooting)
-        {
-            sooterSet();
-        }
-        else if (enemyTypes == enemyTypesEnum.creeper)
-        {
-            creeperSet();
-        }
-    }
-
-    /// <summary>
-    /// will wait for 2 seconds
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator delay()
+	IEnumerator delay()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1);
 
 		
         Destroy(gameObject);
     }
 
-	/// <summary>
-	/// shoots projectile
-	/// </summary>
     private void shootProjectile()
 	{
 
@@ -231,5 +202,4 @@ public class enemyController: MonoBehaviour
 
 		
 	}
-    #endregion
 }

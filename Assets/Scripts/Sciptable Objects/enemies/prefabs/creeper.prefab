@@ -123,6 +123,7 @@ MonoBehaviour:
   - {fileID: 5240704635030453215}
   explosion: {fileID: 11400000, guid: 4ea029ef062038f40b005eee1b308a58, type: 2}
   ExlotionsPrefab: {fileID: 3101892214609067262, guid: 6343770b67b1a7c42996227c147ec9f0, type: 3}
+  HealthPickUpPrefab: {fileID: 2939383024649246356, guid: ab7c1cedcca25904d82ab57df7865f20, type: 3}
   enemyTypes: 3
 --- !u!195 &5240704633488086782
 NavMeshAgent:

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08fa078e58fe2e548913e8eb9847ce0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfc9cf32ad095b42b20016b6d9d026b, type: 3}
   m_Name: SpeedUp
   m_EditorClassIdentifier: 
-  id: 5
-  augmentName: SpeedUp
-  value: 5
+  Id: 3
+  AugmentName: Speed Up
+  Value: 0
   Icon: {fileID: 21300000, guid: 05423cd4ee0df334ab7d2aac10a65a24, type: 3}
