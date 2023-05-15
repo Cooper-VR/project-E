@@ -11,6 +11,7 @@ public class WallRunning : MonoBehaviour
     [Header("References")]
     BoxCollider colliderToDisable;
     public PhysicMaterial newMaterial; // The new physics material to apply to the capsule
+    [SerializeField] float capsuleRadius;
 
 
 
@@ -31,6 +32,7 @@ public class WallRunning : MonoBehaviour
     [Header("Wall Running")]
     [SerializeField] private float wallRunGravity;
     [SerializeField] private float wallRunJumpForce;
+    [SerializeField] private float wallAttractionForce;
 
     [Header("Camera")]
     [SerializeField] private Camera cam;
@@ -75,6 +77,7 @@ public class WallRunning : MonoBehaviour
         distanceToDisengageWallrun = wallDistance;
         CapsuleCollider capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
         capsuleCollider.height = 2;
+        capsuleCollider.radius = capsuleRadius;
     }
 
 
@@ -168,7 +171,7 @@ public class WallRunning : MonoBehaviour
 
     void StartWallRun()
     {
-        GetComponent < SurfCharacter > ().enabled = false;
+        GetComponent<SurfCharacter>().enabled = false;
         if (!hasStartedWallRun)
         {
             rb.velocity = surfCharacter.moveData.velocity;
@@ -194,9 +197,13 @@ public class WallRunning : MonoBehaviour
             horizontalMovement = 0;
         }
 
+        // Calculate direction towards wall
+        Vector3 wallDirection = (wallLeft ? leftWallHit.point : rightWallHit.point) - transform.position;
+        wallDirection.Normalize();
 
-
+        // Apply force towards wall;
         rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Acceleration);
+        rb.AddForce(wallDirection * wallAttractionForce, ForceMode.Acceleration);
 
         rb.AddForce(Vector3.down * wallRunGravity, ForceMode.Force);
 
