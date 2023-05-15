@@ -91,6 +91,7 @@ public class enemyController: MonoBehaviour
             Destroy(gameObject);
             AugmentManager.AddPoints();
         }
+
     }
 
 	private void zombieSet()
