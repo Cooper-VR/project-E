@@ -7,7 +7,6 @@ public class enemySpawnerController : MonoBehaviour
 
 	public spawner spawnData;
 	public LayerMask ground;
-
 	public Terrain terrainCollider;
 
 	#region private variables
@@ -20,11 +19,11 @@ public class enemySpawnerController : MonoBehaviour
 
 	void Start()
 	{
-        methods.getRandomSpawn(spawnData, transform.position, terrainCollider);
+        methods.getRandomSpawn(spawnData, transform.position, terrainCollider, ground);
 		timeInterval = 60 / spawnData.EnemiesPerMin;
 
 		totalEnemies++;
-		GameObject.Instantiate(spawnData.enemyPrefab, methods.getRandomSpawn(spawnData, transform.position, terrainCollider), transform.rotation, gameObject.transform);
+		GameObject.Instantiate(spawnData.enemyPrefab, methods.getRandomSpawn(spawnData, transform.position, terrainCollider, ground), transform.rotation, gameObject.transform);
 	}
 
 	// Update is called once per frame
@@ -34,7 +33,7 @@ public class enemySpawnerController : MonoBehaviour
 		
 		if (currentTime - timeOffset >= timeInterval && totalEnemies <= spawnData.totalEnemies)
 		{
-			Vector3 spawn = methods.getRandomSpawn(spawnData, transform.position, terrainCollider);
+			Vector3 spawn = methods.getRandomSpawn(spawnData, transform.position, terrainCollider, ground);
 
 			if (spawn != new Vector3(0, -1 ,0)) 
 			{
