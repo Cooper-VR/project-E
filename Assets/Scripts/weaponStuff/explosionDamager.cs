@@ -45,7 +45,7 @@ public class explosionDamager : MonoBehaviour
         }
         catch(NullReferenceException e)
         {
-            Debug.Log("no terrain found");
+            Debug.Log("no terrain found" + " " + e.Message);
         } 
         
         finally
