@@ -14,6 +14,7 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
+        Stats = GameObject.FindGameObjectWithTag("Player").GetComponent<playerStats>();
         slider.maxValue = 150;
     }
 
@@ -36,6 +37,7 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        SetHealth(playerStats.health);
+
+        SetHealth(Stats.health);
     }
 }

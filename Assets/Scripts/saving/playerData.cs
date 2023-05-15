@@ -13,7 +13,7 @@ public class playerData
     public playerData(playerStats playerData)
     {
         level = playerData.level;
-        health = playerStats.health;
+        health = GameObject.FindGameObjectWithTag("Player").GetComponent<playerStats>().health;
 
         position[0] = playerData.transform.position.x;
         position[1] = playerData.transform.position.y;

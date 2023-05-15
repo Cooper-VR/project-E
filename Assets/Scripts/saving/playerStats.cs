@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class playerStats : MonoBehaviour
 {
-    public static int health;
+    public int health;
     public int level;
     private float totalTime;
     // Start is called before the first frame update
