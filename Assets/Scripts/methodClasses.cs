@@ -151,7 +151,7 @@ public class methodClasses
         {
             if (allDamagers[i].tag == "Player" || allDamagers[i].tag == "enemy")
             {
-                Vector3 position = checkPosition(Position, terrainCollider);
+                Vector3 position = checkPosition(Position, terrainCollider); Debug.Log(position);
                 float distance = (position - allDamagers[i].transform.position).magnitude;
 
                 if (distance < explosionData.radius)

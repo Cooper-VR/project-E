@@ -150,7 +150,7 @@ public class enemyController: MonoBehaviour
 				GameObject explotion = GameObject.Instantiate(ExlotionsPrefab, spawnPosition, transform.rotation, gameObject.transform);
 				explosionDamager component = explotion.GetComponent<explosionDamager>();
 				component.explosionData = explosion;
-                methods.onExplosions(component.explosionData, component.rootParticle, transform.position, component.terrainCollider);
+                methods.onExplosions(component.explosionData, component.rootParticle, spawnPosition, component.terrainCollider);
 				exploded = true;
 			}
 			
