@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class enemyController: MonoBehaviour
 {
+	methodClasses methods = new methodClasses();
+
 	public float health;
 	private float maxHealth;
 	public enemies enemyData;
@@ -147,7 +149,7 @@ public class enemyController: MonoBehaviour
 				GameObject explotion = GameObject.Instantiate(ExlotionsPrefab, spawnPosition, transform.rotation, gameObject.transform);
 				explosionDamager component = explotion.GetComponent<explosionDamager>();
 				component.explosionData = explosion;
-				component.onExplosions();
+                methods.onExplosions(component.explosionData, component.rootParticle, transform.position, component.terrainCollider);
 				exploded = true;
 			}
 			
