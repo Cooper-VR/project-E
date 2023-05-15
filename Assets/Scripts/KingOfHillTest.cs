@@ -11,8 +11,8 @@ public class KingOfHillTest : MonoBehaviour
     public GameObject Hill;
     private Renderer HillColor;
     public GameObject player;
-    private float currentTime = 180f;
-    public TMP_Text timeText;
+    public float currentTime = 180;
+    public TMPro.TextMeshProUGUI TimeText;
     public bool captured= false;
     public float speed = 0.1f;
     public bool gameOver = false;
@@ -21,7 +21,7 @@ public class KingOfHillTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -74,11 +74,10 @@ public class KingOfHillTest : MonoBehaviour
     }
     void DisplayTime(float currentTime)
     {
+
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
-        string timeText = System.TimeSpan.FromSeconds(currentTime).ToString("hh':'mm':'ss");
-        
-
+        string TimeText = currentTime.ToString();
 
     }
 
