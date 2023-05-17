@@ -121,10 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71bf36a6ef57f44e9f07bc72e7ca8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPosition: {fileID: 7116005157558126387}
-  controller: {fileID: 7116005157737095692}
-  offset: 0
-  head: {fileID: 0}
+  head: {fileID: 7116005158927455082}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &7116005157558126386
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,6 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   level: 0
+  account: 
 --- !u!136 &7116005157737095687
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -738,6 +737,11 @@ MonoBehaviour:
   - {fileID: 2673022483396364929}
   Keys: 3100000032000000
   switchtime: 0.05
+  shooting: 0
+  currentWeapon: {fileID: 0}
+  gunData: {fileID: 0}
+  gunScripts: {fileID: 0}
+  SetSources: {fileID: 0}
 --- !u!1001 &6986017544203802710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -949,6 +953,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1767293325709392356, guid: 499e189022e3bc849b4c537317a65c9f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.059
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767293325709392356, guid: 499e189022e3bc849b4c537317a65c9f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.1314
+      objectReference: {fileID: 0}
     - target: {fileID: 1767293325709392359, guid: 499e189022e3bc849b4c537317a65c9f, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1001,6 +1013,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1767293325807100713, guid: 499e189022e3bc849b4c537317a65c9f, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 7116005158927455082}
     - target: {fileID: 1767293325807100713, guid: 499e189022e3bc849b4c537317a65c9f, type: 3}
       propertyPath: particles.Array.size
       value: 5
@@ -1144,6 +1160,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5177269526006440713, guid: ad540088bdd6f504cbe13347069fd868, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 7116005158927455082}
     - target: {fileID: 5177269526006440713, guid: ad540088bdd6f504cbe13347069fd868, type: 3}
       propertyPath: particles.Array.size
       value: 4
