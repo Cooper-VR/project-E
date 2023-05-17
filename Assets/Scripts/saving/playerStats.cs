@@ -8,10 +8,12 @@ public class playerStats : MonoBehaviour
 {
     public int health;
     public int level;
+    public string account;
     private float totalTime;
     // Start is called before the first frame update
     void Start()
     {
+        savePlayer();
         health = 150;
         StartCoroutine(HealthDetuction());
     }
@@ -82,6 +84,7 @@ public class playerStats : MonoBehaviour
 
         level = data.level;
         health = data.health;
+        account = data.account;
 
         Vector3 position = new Vector3();
 

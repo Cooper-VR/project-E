@@ -7,12 +7,14 @@ public class playerData
 {
     public int level;
     public int health;
+    public string account = ""; 
     public float[] position = new float[3];
     public float[] rotation = new float[4];
 
     public playerData(playerStats playerData)
     {
         level = playerData.level;
+        account = GameMenuManager.usernameText;
         health = GameObject.FindGameObjectWithTag("Player").GetComponent<playerStats>().health;
 
         position[0] = playerData.transform.position.x;

@@ -32,6 +32,8 @@ public static class saveSystem
 			BinaryFormatter formatter = new BinaryFormatter();
 			FileStream stream = new FileStream(path, FileMode.Open);
 
+
+			Debug.Log("afdjskdl");
 			playerData data = formatter.Deserialize(stream) as playerData;
 
 			stream.Close();
