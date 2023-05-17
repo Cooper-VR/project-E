@@ -37,7 +37,8 @@ public class enemyController: MonoBehaviour
 		running,
 		flying,
 		shooting,
-		creeper
+		creeper,
+		rocket
 	};
 	public enemyTypesEnum enemyTypes = enemyTypesEnum.running;
 
@@ -80,7 +81,11 @@ public class enemyController: MonoBehaviour
         } else if (enemyTypes == enemyTypesEnum.creeper)
 		{
 			creeperSet();
-		}
+		} else if (enemyTypes == enemyTypesEnum.rocket)
+		{
+			rocketSet();
+
+        }
 
         if (health <= 0)
         {
@@ -173,7 +178,24 @@ public class enemyController: MonoBehaviour
 
     }
 
-	IEnumerator delay()
+	private void rocketSet()
+	{
+        if ((transform.position - GameObject.FindGameObjectWithTag("Player").transform.position).magnitude > 15f)
+        {
+            agent.destination = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+        }
+        else
+        {
+            Vector3 mainPosition = transform.position;
+            agent.destination = mainPosition;
+
+            currentTime += Time.deltaTime;
+            shootProjectile();
+        }
+    }
+
+    IEnumerator delay()
 	{
 		yield return new WaitForSeconds(1);
 

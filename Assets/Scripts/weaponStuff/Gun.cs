@@ -49,7 +49,7 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        player.SetBool("reload", gunData.reloading);
+        //player.SetBool("reload", gunData.reloading);
         timeSinceLastShot += Time.deltaTime;
 
         Debug.DrawRay(cam.position, cam.forward * 5);
@@ -91,7 +91,7 @@ public class Gun : MonoBehaviour
 	{
 		if (!gunData.reloading && this.gameObject.activeSelf)
 		{
-			StartCoroutine(Reload());player.SetBool("reload", false);
+			//StartCoroutine(Reload());player.SetBool("reload", false);
 		}
 	}
 
