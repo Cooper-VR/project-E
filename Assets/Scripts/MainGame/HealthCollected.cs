@@ -40,12 +40,11 @@ public class HealthCollected : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+        playerStats playerHealth;
+        playerHealth = col.gameObject.GetComponent<playerStats>();
+
         if (col.tag == "Player")
         {
-
-            playerStats playerHealth;
-            playerHealth = col.gameObject.GetComponent<playerStats>();
-
             if ((playerHealth.health + 25) > 150)
             {
                 playerHealth.health = 150;

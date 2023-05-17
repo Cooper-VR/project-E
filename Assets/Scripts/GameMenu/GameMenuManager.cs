@@ -23,6 +23,7 @@ public class GameMenuManager : MonoBehaviour
     //Get the rest of variables nessisary for script.
     public TMP_Text UsernameField;
     public TMP_Text ProfileName;
+    public static string usernameText;
     public GameObject ErrorText;
     public Image ProfileBackground;
     public Image ProfileAvatar;
@@ -35,12 +36,19 @@ public class GameMenuManager : MonoBehaviour
     int index = 0;
 
     void Start()
-    {
+    {        
+        playerData data = saveSystem.loadPlayer();
+
+        if (data.account != "")
+        { 
+            new_player = false;
+        }
+
         //When the scene starts we want to see if the player is new, if so iniate newplayer portocol if else load their save data
         ProfileAvatar.sprite = Avatars[index];
         try
         {
-            ProfileName.text = "Profile";
+            ProfileName.text = data.account;
         }
         catch
         {
@@ -87,6 +95,7 @@ public class GameMenuManager : MonoBehaviour
             Debug.Log("Register Acount");
             Menus[3].SetActive(false);
             ProfileName.text = UsernameField.text;
+            usernameText = ProfileName.text;
             SwitchMenu(1);
         }
     }

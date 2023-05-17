@@ -37,6 +37,7 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
+
         SetHealth(Stats.health);
     }
 }
