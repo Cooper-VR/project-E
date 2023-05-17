@@ -10,9 +10,11 @@ public class playerStats : MonoBehaviour
     public int level;
     public string account;
     private float totalTime;
+    public GameObject deathScreen;
     // Start is called before the first frame update
     void Start()
     {
+        deathScreen.SetActive(false);
         savePlayer();
         health = 150;
         StartCoroutine(HealthDetuction());
@@ -36,7 +38,16 @@ public class playerStats : MonoBehaviour
     {
         if (health <= 0)
         {
-            Debug.Log("do ui animation for when they die");
+            deathScreen.SetActive(true);
+
+            MonoBehaviour[] scripts = gameObject.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour script in scripts)
+            {
+                script.enabled = false;
+            }
+
+            
+
         }   
     }
 
