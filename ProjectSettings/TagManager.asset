@@ -8,6 +8,7 @@ TagManager:
   - bullet
   - enemyBullet
   - terrain
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - player
   - enemies
   - FPSLayer
-  - 
-  - 
+  - Block
+  - EnemyBullet
   - 
   - 
   - 

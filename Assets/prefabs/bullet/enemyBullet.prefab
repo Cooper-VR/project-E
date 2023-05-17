@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8045942064453052120}
   - component: {fileID: 6856984454341530277}
   - component: {fileID: 3389612249391320958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 4330330313728494805}
   - component: {fileID: 6741403239709951549}
   - component: {fileID: 1257000443909371956}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: enemyBullet
   m_TagString: enemyBullet
   m_Icon: {fileID: 0}
@@ -274,3 +274,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   publicDamge: 10
+  startTime: 0
+  endTime: 0
